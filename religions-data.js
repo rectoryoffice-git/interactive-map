@@ -1,0 +1,1279 @@
+window.RELIGIONS_DATA = {
+  "animism": {
+    "name": "Animism",
+    "area": "africa",
+    "subtext": "",
+    "date": "100,000 BC",
+    "parents": [],
+    "children": [
+      "polyEurope",
+      "middleSham",
+      "aboriginal",
+      "newGuinea",
+      "protoIndo",
+      "berber",
+      "yoruba",
+      "bantu",
+      "nilotic"
+    ],
+    "description": "A broad term for religious worldviews in which animals, plants, places, objects, and natural forces may have spirit, agency, or personhood. Animist practices are diverse and often embedded in local ritual, kinship, healing, and land relationships."
+  },
+  "polyEurope": {
+    "name": "Europe\nPolytheism",
+    "area": "europe",
+    "subtext": "",
+    "date": "40,000 BC",
+    "parents": [
+      "animism"
+    ],
+    "children": [],
+    "description": "An umbrella label for prehistoric European ritual and mythic traditions before the historically attested Indo-European religions. Evidence comes mainly from archaeology, burial practices, figurines, monuments, and later comparative reconstruction."
+  },
+  "san": {
+    "name": "San\nAnimism",
+    "area": "africa",
+    "subtext": "",
+    "date": "40,000 BC",
+    "parents": [],
+    "children": [],
+    "description": "Religious traditions associated with San peoples of southern Africa, often centered on spirit potency, trance healing, animal-human relationships, and stories of creator or trickster figures. Practices vary widely among San communities."
+  },
+  "middleSham": {
+    "name": "Middle East\nShamanism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "12,500 BC",
+    "parents": [
+      "animism"
+    ],
+    "children": [
+      "centralAsian",
+      "egyptian",
+      "mesopotamian",
+      "phoenician"
+    ],
+    "description": "A broad prehistoric label for ritual traditions in Southwest Asia before the rise of urban temple religions. Archaeological evidence suggests ancestor veneration, animal symbolism, fertility imagery, and sacred landscapes played important roles."
+  },
+  "centralAsian": {
+    "name": "Central Asian\nShamanism",
+    "area": "india",
+    "subtext": "",
+    "date": "12,500 BC",
+    "parents": [
+      "middleSham"
+    ],
+    "children": [
+      "eastSouth",
+      "indus"
+    ],
+    "description": "A broad label for shamanic and animist traditions of Central Asia, often involving sky, earth, ancestor, and spirit powers. Historical forms later interacted with Buddhism, Islam, Tengri traditions, and local folk practices."
+  },
+  "eastSouth": {
+    "name": "East / South Asian\nShamanism",
+    "area": "eastAsia",
+    "subtext": "",
+    "date": "10,000 BC",
+    "parents": [
+      "centralAsian"
+    ],
+    "children": [
+      "fosna",
+      "chineseSham"
+    ],
+    "description": "An umbrella label for early ritual traditions across East and South Asia before later named religions. These traditions likely included ancestor rites, spirit mediation, local deities, sacred geography, and healing practices."
+  },
+  "fosna": {
+    "name": "Fosna\nShamanism",
+    "area": "arctic",
+    "subtext": "",
+    "date": "8000 BC",
+    "parents": [
+      "eastSouth"
+    ],
+    "children": [
+      "paleoIndian",
+      "sidea",
+      "finnish",
+      "siberia"
+    ],
+    "description": "A label for Mesolithic hunter-gatherer cultures of coastal Norway and Scandinavia. Their religious life is not directly recorded, but archaeology points to ritual relationships with animals, seascapes, tools, and the dead."
+  },
+  "paleoIndian": {
+    "name": "Paleo-Indian\nShamanism",
+    "area": "northAmerica",
+    "subtext": "",
+    "date": "12,000 BC",
+    "parents": [
+      "fosna"
+    ],
+    "children": [
+      "archaicIndians"
+    ],
+    "description": "A broad label for early Indigenous traditions in the Americas. Religious life is inferred from archaeology and later Indigenous continuities, including ritual relationships with animals, ancestors, landscapes, and powerful beings."
+  },
+  "aboriginal": {
+    "name": "Aboriginal\nDreamtime",
+    "area": "australia",
+    "subtext": "",
+    "date": "40,000 BC",
+    "parents": [
+      "animism"
+    ],
+    "children": [],
+    "description": "Australian Aboriginal religious traditions often center on Dreaming narratives that connect ancestral beings, law, ceremony, land, and identity. Traditions are highly local and are maintained through story, song, art, and ritual obligation."
+  },
+  "newGuinea": {
+    "name": "New-Guinea\nAnimism",
+    "area": "newGuinea",
+    "subtext": "",
+    "date": "40,000 BC",
+    "parents": [
+      "animism"
+    ],
+    "children": [],
+    "description": "A broad label for Indigenous religions of New Guinea, where local traditions commonly include ancestor spirits, land-linked beings, initiation, ritual exchange, and healing. Beliefs differ greatly among language and cultural groups."
+  },
+  "protoIndo": {
+    "name": "Proto-Indo\nEurope\nPolytheism",
+    "area": "europe",
+    "subtext": "",
+    "date": "3500 BC",
+    "parents": [
+      "animism"
+    ],
+    "children": [
+      "indoIranian",
+      "germanic",
+      "slavic",
+      "baltic",
+      "celtic",
+      "greek"
+    ],
+    "description": "A reconstructed umbrella for the religious culture of Proto-Indo-European-speaking peoples. Scholars infer themes such as sky gods, storm gods, divine twins, sacred fire, cattle wealth, and ritual poetry from later Indo-European traditions."
+  },
+  "berber": {
+    "name": "Berber\nAnimism",
+    "area": "africa",
+    "subtext": "",
+    "date": "9,000 BC",
+    "parents": [
+      "animism"
+    ],
+    "children": [],
+    "description": "A broad label for pre-Islamic Amazigh or Berber religious traditions in North Africa. Evidence points to local spirits, ancestors, sacred places, astral symbolism, and later interactions with Punic, Roman, Christian, and Islamic traditions."
+  },
+  "yoruba": {
+    "name": "Yoruba\nAnimism",
+    "area": "africa",
+    "subtext": "",
+    "date": "9,000 BC",
+    "parents": [
+      "animism"
+    ],
+    "children": [],
+    "description": "Yoruba religion centers on a supreme creator, numerous orisha, divination, sacrifice, festival, and ancestor veneration. It has deeply influenced Atlantic diaspora religions including Candomble, Santeria, and Vodou-related traditions."
+  },
+  "bantu": {
+    "name": "Bantu\nAnimism",
+    "area": "africa",
+    "subtext": "",
+    "date": "3000 BC",
+    "parents": [
+      "animism"
+    ],
+    "children": [],
+    "description": "A broad label for religious traditions among Bantu-speaking peoples, often including creator concepts, ancestors, nature spirits, healing specialists, divination, and rites of passage. Traditions vary widely across central, eastern, and southern Africa."
+  },
+  "nilotic": {
+    "name": "Nilotic\nAnimism",
+    "area": "africa",
+    "subtext": "",
+    "date": "3000 BC",
+    "parents": [
+      "animism"
+    ],
+    "children": [
+      "zoroastrianism",
+      "manichaeism"
+    ],
+    "description": "A broad label for religious traditions among Nilotic-speaking peoples of northeastern and eastern Africa. Many traditions include high gods, cattle symbolism, ancestors, diviners, rainmaking, and ritual relations with land and lineage."
+  },
+  "egyptian": {
+    "name": "Egyptian\nPolytheism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "3000 BC",
+    "parents": [
+      "middleSham"
+    ],
+    "children": [],
+    "description": "Ancient Egyptian religion involved many gods, temple cults, royal ritual, cosmic order, funerary practice, and afterlife beliefs. Major deities included Ra, Osiris, Isis, Horus, Amun, Hathor, and many local forms."
+  },
+  "indoIranian": {
+    "name": "Indo-Iranian\nPolytheism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "2500 BC",
+    "parents": [
+      "protoIndo"
+    ],
+    "children": [
+      "vedic"
+    ],
+    "description": "A reconstructed and early historical religious complex shared by Indo-Aryan and Iranian peoples. It included sacred fire, ritual speech, sacrifice, divine beings such as devas or ahuras, and poetic traditions later seen in Vedic and Iranian religion."
+  },
+  "mesopotamian": {
+    "name": "Mesopotamian\nPolytheism",
+    "area": "india",
+    "subtext": "",
+    "date": "4000 BC",
+    "parents": [
+      "middleSham"
+    ],
+    "children": [
+      "canaanite"
+    ],
+    "description": "The polytheistic religions of Sumer, Akkad, Babylonia, and Assyria centered on city gods, temples, kingship, omens, ritual offerings, and myths about creation, divine order, and the underworld."
+  },
+  "canaanite": {
+    "name": "Canaanite\nPolytheism",
+    "area": "india",
+    "subtext": "",
+    "date": "3000 BC",
+    "parents": [
+      "mesopotamian"
+    ],
+    "children": [],
+    "description": "Canaanite religion included gods such as El, Baal, Asherah, Anat, and Astarte, with rituals tied to cities, fertility, storms, kingship, and household devotion. It is known from archaeology and texts such as those from Ugarit."
+  },
+  "hinduism": {
+    "name": "Hinduism",
+    "area": "india",
+    "subtext": "",
+    "date": "1000 BC",
+    "parents": [
+      "vedic"
+    ],
+    "children": [],
+    "description": "Hinduism is a diverse family of South Asian traditions involving dharma, karma, ritual, pilgrimage, philosophy, temple worship, devotion, and many deities. It developed from Vedic, local, epic, Puranic, and philosophical streams."
+  },
+  "chineseSham": {
+    "name": "Wuism\n(Chinese\nShamanism)",
+    "area": "eastAsia",
+    "subtext": "",
+    "date": "5000 BC",
+    "parents": [
+      "eastSouth"
+    ],
+    "children": [
+      "muism"
+    ],
+    "description": "Wuism refers to Chinese shamanic and spirit-medium practices involving communication with spirits, healing, exorcism, rainmaking, and ritual performance. Such practices have interacted with Chinese folk religion, Daoism, and state ritual."
+  },
+  "muism": {
+    "name": "Muism\n(Korean\nShamanism)",
+    "area": "eastAsia",
+    "subtext": "",
+    "date": "4500 BC",
+    "parents": [
+      "chineseSham"
+    ],
+    "children": [
+      "taoism",
+      "shinto",
+      "confucianism",
+      "tengrism"
+    ],
+    "description": "Muism is Korean shamanism, centered on mudang ritual specialists, spirit possession or mediation, healing, divination, and ceremonies called gut. It coexists and overlaps with Buddhism, Confucianism, and Korean folk religion."
+  },
+  "indus": {
+    "name": "Indus\nValley\nShamanism",
+    "area": "india",
+    "subtext": "",
+    "date": "3300 BC",
+    "parents": [
+      "centralAsian"
+    ],
+    "children": [],
+    "description": "A tentative label for religious practices of the Indus Valley Civilization. Because its script remains undeciphered, interpretation relies on archaeology such as seals, figurines, bathing structures, animal symbols, and possible ritual spaces."
+  },
+  "vedic": {
+    "name": "Vedic\n(Early Hindu)\nPolytheism",
+    "area": "india",
+    "subtext": "",
+    "date": "1700 BC",
+    "parents": [
+      "indoIranian"
+    ],
+    "children": [
+      "hinduism",
+      "buddhism",
+      "jainism"
+    ],
+    "description": "Vedic religion was the early Indo-Aryan sacrificial tradition preserved in the Vedas. It emphasized fire ritual, hymns, offerings, priests, cosmic order, and deities such as Indra, Agni, Soma, Varuna, and Ushas."
+  },
+  "sidea": {
+    "name": "Sami\nShamanism",
+    "area": "arctic",
+    "subtext": "",
+    "date": "2000 BC",
+    "parents": [
+      "fosna"
+    ],
+    "children": [],
+    "description": "A label for Sami religious traditions, which include noaidi ritual specialists, drum divination, sacred stones or sieidi, animal spirits, ancestors, and relationships with reindeer, landscape, and weather. Traditions vary by region."
+  },
+  "finnish": {
+    "name": "Finnish\nShamanism",
+    "area": "arctic",
+    "subtext": "",
+    "date": "2000 BC",
+    "parents": [
+      "fosna"
+    ],
+    "children": [],
+    "description": "Pre-Christian Finnish religion included spirits of forests, water, sky, and ancestors, with ritual specialists and mythic poetry later preserved in oral tradition. Figures such as Ukko and various haltija spirits appear in later sources."
+  },
+  "siberia": {
+    "name": "Seidis\nShamanism",
+    "area": "arctic",
+    "subtext": "",
+    "date": "6000 BC",
+    "parents": [
+      "fosna"
+    ],
+    "children": [],
+    "description": "A broad label for shamanic traditions across Siberia, often involving spirit journeys, trance, drums, ancestor and animal spirits, healing, and cosmic geography. These traditions differ among many Indigenous peoples."
+  },
+  "archaicIndians": {
+    "name": "Archaic Indian\nShamanism",
+    "area": "northAmerica",
+    "subtext": "",
+    "date": "4500 BC",
+    "parents": [
+      "paleoIndian"
+    ],
+    "children": [
+      "melanesian",
+      "hopi",
+      "anasazi",
+      "olmec",
+      "polynesian",
+      "micronesian"
+    ],
+    "description": "A broad archaeological label for Indigenous North American traditions after the Paleo-Indian period. Religious life is inferred from burials, mounds, trade goods, rock art, ritual objects, and later regional continuities."
+  },
+  "melanesian": {
+    "name": "Melanesian\nAnimism",
+    "area": "oceania",
+    "subtext": "",
+    "date": "1650 BC",
+    "parents": [
+      "archaicIndians"
+    ],
+    "children": [],
+    "description": "Melanesian religious traditions are highly diverse and often include ancestor veneration, spirits of place, ritual exchange, initiation, magic, healing, and mythic origins. Christianity later interacted with many local traditions."
+  },
+  "germanic": {
+    "name": "Germanic\nPolytheism",
+    "area": "europe",
+    "subtext": "",
+    "date": "1700 BC",
+    "parents": [
+      "protoIndo"
+    ],
+    "children": [
+      "norse"
+    ],
+    "description": "Germanic polytheism included gods such as Odin, Thor, Freyr, Freyja, and Tyr, along with ancestor rites, sacred groves, fate, and ritual feasting. It is known from archaeology, Roman reports, inscriptions, and medieval Norse sources."
+  },
+  "slavic": {
+    "name": "Slavic\nPolytheism",
+    "area": "europe",
+    "subtext": "",
+    "date": "600 BC",
+    "parents": [
+      "protoIndo"
+    ],
+    "children": [
+      "rodnovery"
+    ],
+    "description": "Slavic polytheism involved gods and spirits associated with thunder, fertility, household, water, forest, and the dead. Sources are fragmentary, with names such as Perun, Veles, Mokosh, and Svarog preserved in later records."
+  },
+  "baltic": {
+    "name": "Baltic\nPolytheism",
+    "area": "europe",
+    "subtext": "",
+    "date": "2000 BC",
+    "parents": [
+      "protoIndo"
+    ],
+    "children": [
+      "romuva"
+    ],
+    "description": "Baltic polytheism included deities and spirits connected to sky, thunder, sun, fate, hearth, land, and ancestors. Lithuanian and Latvian folklore preserves important evidence, alongside medieval Christian accounts."
+  },
+  "celtic": {
+    "name": "Celtic\nPolytheism",
+    "area": "europe",
+    "subtext": "",
+    "date": "500 BC",
+    "parents": [
+      "protoIndo"
+    ],
+    "children": [
+      "druidism"
+    ],
+    "description": "Celtic polytheism was a family of Iron Age and ancient traditions involving local gods, sacred groves, rivers, warriors, healing, sovereignty, and ritual specialists. Evidence comes from archaeology, inscriptions, classical sources, and later insular literature."
+  },
+  "greek": {
+    "name": "Greek\nPolytheism",
+    "area": "europe",
+    "subtext": "",
+    "date": "1000 BC",
+    "parents": [
+      "protoIndo"
+    ],
+    "children": [
+      "grecoRoman",
+      "hermeticism"
+    ],
+    "description": "Ancient Greek religion centered on gods such as Zeus, Hera, Athena, Apollo, Artemis, Dionysus, and Demeter, with sacrifice, festivals, oracles, household cult, civic ritual, and mythic storytelling."
+  },
+  "grecoRoman": {
+    "name": "Greco-Roman\nMystery Cults",
+    "area": "europe",
+    "subtext": "",
+    "date": "750 BC",
+    "parents": [
+      "greek"
+    ],
+    "children": [
+      "hellenism",
+      "neoPlatonism",
+      "gnosticism"
+    ],
+    "description": "Greco-Roman mystery cults were initiatory religious movements promising special ritual knowledge, protection, or blessed afterlife hopes. Examples include Eleusinian, Dionysian, Isis, Mithraic, and other initiatory traditions."
+  },
+  "hellenism": {
+    "name": "Hellenism",
+    "area": "europe",
+    "subtext": "",
+    "date": "300 BC",
+    "parents": [
+      "grecoRoman"
+    ],
+    "children": [],
+    "description": "Hellenism here refers to Hellenistic religious culture after Alexander, when Greek, Egyptian, Near Eastern, and local traditions mixed widely through cities, ruler cults, philosophy, astrology, and mystery religions."
+  },
+  "hermeticism": {
+    "name": "Hermeticism",
+    "area": "europe",
+    "subtext": "",
+    "date": "100 AD",
+    "parents": [
+      "greek"
+    ],
+    "children": [],
+    "description": "Hermeticism is a late antique religious-philosophical tradition associated with writings attributed to Hermes Trismegistus. It blends Greek, Egyptian, Platonic, astrological, magical, and contemplative themes about cosmos, mind, and divine knowledge."
+  },
+  "neoPlatonism": {
+    "name": "Neo-Platonism",
+    "area": "europe",
+    "subtext": "",
+    "date": "250 AD",
+    "parents": [
+      "grecoRoman"
+    ],
+    "children": [
+      "theosophy"
+    ],
+    "description": "Neoplatonism is a philosophical and religious tradition beginning with Plotinus that describes reality as emanating from the One. It influenced late antique paganism, Christianity, Judaism, Islam, and Renaissance esotericism."
+  },
+  "gnosticism": {
+    "name": "Gnosticism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "100 AD",
+    "parents": [
+      "grecoRoman"
+    ],
+    "children": [
+      "bogomilism"
+    ],
+    "description": "Gnosticism refers to several ancient movements that emphasized saving knowledge, divine sparks within humans, and often a sharp contrast between the material world and a higher spiritual reality. Its forms were diverse rather than one church."
+  },
+  "bogomilism": {
+    "name": "Bogomilism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "940 AD",
+    "parents": [
+      "gnosticism"
+    ],
+    "children": [
+      "catharism"
+    ],
+    "description": "Bogomilism was a medieval Balkan Christian dualist movement that criticized church hierarchy, sacraments, and material wealth. It taught a cosmic conflict between good and evil powers and influenced later European dissident traditions."
+  },
+  "ethiopian": {
+    "name": "Ethiopian\nPolytheism",
+    "area": "africa",
+    "subtext": "",
+    "date": "900 BC",
+    "parents": [],
+    "children": [],
+    "description": "A broad label for pre-Christian and local religious traditions in the Ethiopian and Eritrean highlands. Evidence includes South Arabian, Aksumite, local spirit, ancestor, and sacred kingship elements before and alongside Judaism, Christianity, and Islam."
+  },
+  "zoroastrianism": {
+    "name": "Zoroastrianism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "1100 BC",
+    "parents": [
+      "nilotic"
+    ],
+    "children": [
+      "mithraism"
+    ],
+    "description": "Zoroastrianism is an Iranian religion associated with the prophet Zarathustra. It centers on Ahura Mazda, truth versus falsehood, sacred fire, ethical choice, ritual purity, and later ideas about judgment and cosmic renewal."
+  },
+  "mithraism": {
+    "name": "Mithraism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "100 AD",
+    "parents": [
+      "zoroastrianism"
+    ],
+    "children": [],
+    "description": "Mithraism was a Roman initiatory cult focused on the god Mithras, practiced mainly by men in small temple spaces called mithraea. Its imagery includes the bull-slaying scene, planetary symbolism, grades of initiation, and shared meals."
+  },
+  "christianity": {
+    "name": "Christianity",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "33 AD",
+    "parents": [
+      "judaism"
+    ],
+    "children": [
+      "catholicism",
+      "eastOrthodox"
+    ],
+    "description": "Christianity is a monotheistic religion centered on Jesus of Nazareth as Christ, his death and resurrection, scripture, baptism, Eucharist, prayer, and expectations of salvation and the kingdom of God."
+  },
+  "atenism": {
+    "name": "Atenism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "1348 BC",
+    "parents": [],
+    "children": [],
+    "description": "Atenism was the short-lived royal religion promoted by Pharaoh Akhenaten, focusing worship on the solar disk Aten. It reduced the prominence of traditional Egyptian gods but largely collapsed after Akhenaten's reign."
+  },
+  "judaism": {
+    "name": "Judaism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "950 BC",
+    "parents": [
+      "phoenician"
+    ],
+    "children": [
+      "christianity",
+      "hellenisticJudaism",
+      "reformJudaism",
+      "islamSunni",
+      "kabbalah"
+    ],
+    "description": "Judaism is the religious tradition of the Jewish people, centered on covenant, Torah, ethical monotheism, law, prayer, festivals, and communal memory. It developed from ancient Israelite religion into biblical, rabbinic, and later forms."
+  },
+  "hellenisticJudaism": {
+    "name": "Hellenistic\nJudaism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "300 BC",
+    "parents": [
+      "judaism"
+    ],
+    "children": [],
+    "description": "Hellenistic Judaism refers to Jewish life and thought in Greek-speaking environments after Alexander. It combined Jewish scripture and practice with Greek language, philosophy, literary forms, and diaspora institutions."
+  },
+  "phoenician": {
+    "name": "Phoenician\nPolytheism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "2000 BC",
+    "parents": [
+      "middleSham"
+    ],
+    "children": [
+      "judaism"
+    ],
+    "description": "Phoenician religion was a West Semitic polytheistic tradition practiced in cities such as Tyre, Sidon, and Byblos. It involved gods such as Baal, Astarte, Melqart, and Eshmun, with strong links to trade, city cults, and colonies."
+  },
+  "buddhism": {
+    "name": "Buddhism",
+    "area": "india",
+    "subtext": "",
+    "date": "520 BC",
+    "parents": [
+      "vedic"
+    ],
+    "children": [
+      "theravada",
+      "mahayana",
+      "vajrayana",
+      "bon"
+    ],
+    "description": "Buddhism began with the teachings of Siddhartha Gautama, the Buddha, on suffering, impermanence, non-self, karma, rebirth, and liberation. It developed monastic, devotional, philosophical, and ritual traditions across Asia."
+  },
+  "jainism": {
+    "name": "Jainism",
+    "area": "india",
+    "subtext": "",
+    "date": "1000 BC",
+    "parents": [
+      "vedic"
+    ],
+    "children": [],
+    "description": "Jainism is an Indian religion teaching nonviolence, karma, rebirth, ascetic discipline, and liberation through purification of the soul. It venerates enlightened teachers called tirthankaras, especially Mahavira in the historical period."
+  },
+  "taoism": {
+    "name": "Taoism",
+    "area": "eastAsia",
+    "subtext": "",
+    "date": "500 BC",
+    "parents": [
+      "muism"
+    ],
+    "children": [],
+    "description": "Taoism or Daoism includes philosophical, ritual, meditative, alchemical, and devotional traditions centered on the Dao, naturalness, immortality practices, cosmic balance, and deities within Chinese religious culture."
+  },
+  "shinto": {
+    "name": "Shinto",
+    "area": "eastAsia",
+    "subtext": "",
+    "date": "500 BC",
+    "parents": [
+      "muism"
+    ],
+    "children": [],
+    "description": "Shinto is a Japanese religious tradition centered on kami, ritual purity, shrine worship, festivals, local sacred places, and imperial and community rites. It has long interacted with Buddhism and folk practices."
+  },
+  "confucianism": {
+    "name": "Confucianism",
+    "area": "eastAsia",
+    "subtext": "",
+    "date": "500 BC",
+    "parents": [
+      "muism"
+    ],
+    "children": [],
+    "description": "Confucianism is an ethical, ritual, and political tradition based on teachings associated with Confucius. It emphasizes proper conduct, family reverence, education, moral cultivation, social harmony, and rites."
+  },
+  "tengrism": {
+    "name": "Tengrism",
+    "area": "eastAsia",
+    "subtext": "",
+    "date": "300 BC",
+    "parents": [
+      "muism"
+    ],
+    "children": [],
+    "description": "Tengrism is a Central and Inner Asian religious tradition centered on Tengri, the sky, along with earth, ancestor, and spirit powers. It shaped Turkic and Mongolic political and ritual cultures."
+  },
+  "hopi": {
+    "name": "Hopewell\nShamanism",
+    "area": "northAmerica",
+    "subtext": "",
+    "date": "200 BC",
+    "parents": [
+      "archaicIndians"
+    ],
+    "children": [
+      "mississippi",
+      "iroquois"
+    ],
+    "description": "Hopewell religious traditions are inferred from mound complexes, earthworks, burial goods, long-distance exchange, and animal or cosmic symbolism. The label refers to archaeological cultures rather than one named historical religion."
+  },
+  "anasazi": {
+    "name": "Anasazi\nShamanism",
+    "area": "northAmerica",
+    "subtext": "",
+    "date": "1200 BC",
+    "parents": [
+      "archaicIndians"
+    ],
+    "children": [
+      "inuit",
+      "plateau",
+      "plains",
+      "pueblo"
+    ],
+    "description": "Anasazi or Ancestral Pueblo religious life is inferred from kivas, architecture, rock art, burials, and later Pueblo continuities. It likely involved ceremony, ancestors, emergence narratives, agriculture, and sacred landscapes."
+  },
+  "olmec": {
+    "name": "Olmec\nShamanism",
+    "area": "centralAmerica",
+    "subtext": "",
+    "date": "1500 BC",
+    "parents": [
+      "archaicIndians"
+    ],
+    "children": [
+      "teotihuacan"
+    ],
+    "description": "Olmec religion is known from archaeology, monumental art, and iconography. It likely involved rulers, caves, mountains, maize, rain, jaguar imagery, and supernatural beings that influenced later Mesoamerican traditions."
+  },
+  "mayan": {
+    "name": "Mayan\nPolytheism",
+    "area": "centralAmerica",
+    "subtext": "",
+    "date": "250 BC",
+    "parents": [],
+    "children": [],
+    "description": "Maya religion includes many gods, ancestor veneration, calendar rites, bloodletting, divination, sacred kingship, and cosmology linking sky, earth, caves, and underworld. It survives in transformed forms among Maya communities today."
+  },
+  "teotihuacan": {
+    "name": "Teotihuacan\nPolytheism",
+    "area": "centralAmerica",
+    "subtext": "",
+    "date": "100 BC",
+    "parents": [
+      "olmec"
+    ],
+    "children": [
+      "aztec",
+      "incan",
+      "santoDaime"
+    ],
+    "description": "Teotihuacan religion is known through urban architecture, murals, offerings, and iconography. It emphasized sacred mountains, water, fertility, war, ancestors, and deities later compared with the Storm God and Feathered Serpent."
+  },
+  "polynesian": {
+    "name": "Polynesian\nAnimism",
+    "area": "oceania",
+    "subtext": "",
+    "date": "1650 BC",
+    "parents": [
+      "archaicIndians"
+    ],
+    "children": [],
+    "description": "Polynesian religions are diverse Oceanic traditions involving gods, ancestors, mana, tapu, chiefs, navigation, ritual specialists, and sacred genealogies. Traditions vary across Hawaii, Samoa, Tonga, Aotearoa, Tahiti, and other islands."
+  },
+  "micronesian": {
+    "name": "Micronesian\nAnimism",
+    "area": "oceania",
+    "subtext": "",
+    "date": "1200 BC",
+    "parents": [
+      "archaicIndians"
+    ],
+    "children": [],
+    "description": "Micronesian religious traditions include ancestor spirits, navigation lore, local deities, sacred chiefs, healing, and ritual relations with sea and land. Beliefs vary widely among island societies."
+  },
+  "norse": {
+    "name": "Norse\nPolytheism",
+    "area": "europe",
+    "subtext": "",
+    "date": "200 AD",
+    "parents": [
+      "germanic"
+    ],
+    "children": [
+      "asatru"
+    ],
+    "description": "Norse religion was the North Germanic form of Germanic polytheism, with gods such as Odin, Thor, Freyja, and Loki, myths of Yggdrasil and Ragnarok, ancestor rites, seidr, sacrifice, and sacred feasting."
+  },
+  "asatru": {
+    "name": "Asatru",
+    "area": "europe",
+    "subtext": "",
+    "date": "1870 AD",
+    "parents": [
+      "norse"
+    ],
+    "children": [],
+    "description": "Asatru is a modern revival or reconstruction of Norse and broader Germanic pagan traditions. Communities differ, but often honor gods, ancestors, land spirits, seasonal rites, and ethical ideals drawn from historical sources."
+  },
+  "rodnovery": {
+    "name": "Rodnovery",
+    "area": "europe",
+    "subtext": "",
+    "date": "1890 AD",
+    "parents": [
+      "slavic"
+    ],
+    "children": [],
+    "description": "Rodnovery is a modern revival or reconstruction of Slavic native faith. It draws on folklore, medieval sources, seasonal festivals, ancestor veneration, and deities such as Perun, Veles, Mokosh, and others."
+  },
+  "romuva": {
+    "name": "Romuva",
+    "area": "europe",
+    "subtext": "",
+    "date": "1890 AD",
+    "parents": [
+      "baltic"
+    ],
+    "children": [],
+    "description": "Romuva is a modern Lithuanian Baltic pagan movement that revives and reinterprets Baltic folk religion, songs, festivals, fire rituals, and reverence for deities, ancestors, and nature."
+  },
+  "druidism": {
+    "name": "Druidism",
+    "area": "europe",
+    "subtext": "",
+    "date": "1772 AD",
+    "parents": [
+      "celtic"
+    ],
+    "children": [],
+    "description": "Modern Druidry is a revival and new religious movement inspired by ancient Celtic druids, Romantic-era antiquarianism, nature spirituality, ritual, poetry, and seasonal festivals. It is not a direct survival of ancient druid orders."
+  },
+  "wicca": {
+    "name": "Wicca",
+    "area": "europe",
+    "subtext": "",
+    "date": "1954 AD",
+    "parents": [
+      "theosophy"
+    ],
+    "children": [],
+    "description": "Wicca is a modern pagan witchcraft religion that developed in the mid-20th century. It commonly includes ritual magic, a Goddess and God, seasonal sabbats, lunar rites, covens or solitary practice, and ethical teachings."
+  },
+  "thelema": {
+    "name": "Thelema",
+    "area": "europe",
+    "subtext": "",
+    "date": "1904 AD",
+    "parents": [
+      "tsao"
+    ],
+    "children": [],
+    "description": "Thelema is a modern esoteric religion founded by Aleister Crowley, centered on the principle of discovering and doing one's True Will. It uses ceremonial magic, yoga, scripture, ritual, and initiatory orders."
+  },
+  "theosophy": {
+    "name": "Theosophy",
+    "area": "europe",
+    "subtext": "",
+    "date": "1875 AD",
+    "parents": [
+      "neoPlatonism"
+    ],
+    "children": [
+      "wicca",
+      "rosicrucian",
+      "tsao"
+    ],
+    "description": "Theosophy is a modern esoteric movement associated with Helena Blavatsky and the Theosophical Society. It combines Western esotericism with interpretations of Hindu, Buddhist, and occult ideas about spiritual evolution and hidden wisdom."
+  },
+  "rosicrucian": {
+    "name": "Rosicrucian",
+    "area": "europe",
+    "subtext": "",
+    "date": "1407 AD",
+    "parents": [
+      "theosophy"
+    ],
+    "children": [],
+    "description": "Rosicrucianism is an esoteric Christian and Hermetic tradition inspired by early 17th-century manifestos about a secret brotherhood. Later groups developed initiatory, alchemical, mystical, and symbolic teachings."
+  },
+  "tsao": {
+    "name": "Golden\nDawn",
+    "area": "europe",
+    "subtext": "",
+    "date": "1887 AD",
+    "parents": [
+      "theosophy"
+    ],
+    "children": [
+      "thelema",
+      "anthroposophy"
+    ],
+    "description": "The Hermetic Order of the Golden Dawn was a late 19th-century British esoteric order. It taught ceremonial magic, Kabbalah, astrology, tarot, alchemy, and graded initiation, strongly influencing later occultism."
+  },
+  "anthroposophy": {
+    "name": "Anthroposophy",
+    "area": "europe",
+    "subtext": "",
+    "date": "1912 AD",
+    "parents": [
+      "tsao"
+    ],
+    "children": [],
+    "description": "Anthroposophy is Rudolf Steiner's spiritual movement, which presents a path of inner development and spiritual science. It influenced Waldorf education, biodynamic agriculture, medicine, art, and Christian esoteric practice."
+  },
+  "catharism": {
+    "name": "Catharism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "1143 AD",
+    "parents": [
+      "bogomilism"
+    ],
+    "children": [],
+    "description": "Catharism was a medieval Christian dualist movement in southern France and northern Italy. It criticized the Catholic Church, practiced strict ascetic ideals among its elite, and was suppressed through crusade and inquisition."
+  },
+  "manichaeism": {
+    "name": "Manichaeism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "270 AD",
+    "parents": [
+      "nilotic"
+    ],
+    "children": [
+      "africanPoly"
+    ],
+    "description": "Manichaeism was a late antique religion founded by Mani, combining Christian, Zoroastrian, Buddhist, and Gnostic elements. It taught a cosmic struggle between light and darkness and spread from the Roman Empire to China."
+  },
+  "catholicism": {
+    "name": "Catholicism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "1054 AD",
+    "parents": [
+      "christianity"
+    ],
+    "children": [
+      "protestant"
+    ],
+    "description": "Catholicism is the largest Christian tradition, centered on the authority of the pope and bishops, sacraments, scripture and tradition, liturgy, saints, and a global institutional church."
+  },
+  "eastOrthodox": {
+    "name": "East Orthodox",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "1054 AD",
+    "parents": [
+      "christianity"
+    ],
+    "children": [],
+    "description": "Eastern Orthodoxy is a family of Christian churches rooted in Byzantine tradition, emphasizing apostolic continuity, liturgy, icons, sacraments, councils, and theosis or participation in divine life."
+  },
+  "protestant": {
+    "name": "Protestantism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "1517 AD",
+    "parents": [
+      "catholicism"
+    ],
+    "children": [],
+    "description": "Protestantism is a broad family of Christian traditions that emerged from the Reformation. It often emphasizes scripture, preaching, justification by faith, reform of church practice, and diverse denominational structures."
+  },
+  "africanPoly": {
+    "name": "African\nPolytheism",
+    "area": "africa",
+    "subtext": "",
+    "date": "1550 AD",
+    "parents": [
+      "manichaeism"
+    ],
+    "children": [],
+    "description": "A broad label for African traditional religions, which commonly include creator concepts, spirits, ancestors, divination, healing, sacrifice, initiation, and ritual relations with land and community. Traditions are highly diverse."
+  },
+  "bahai": {
+    "name": "Baha'i Faith",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "1844 AD",
+    "parents": [],
+    "children": [],
+    "description": "The Baha'i Faith is a monotheistic religion founded by Baha'u'llah in the 19th century. It teaches the unity of humanity, progressive revelation, equality, global peace, and harmony of religion and science."
+  },
+  "reformJudaism": {
+    "name": "Reform\nJudaism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "1809 AD",
+    "parents": [
+      "judaism"
+    ],
+    "children": [],
+    "description": "Reform Judaism is a modern Jewish movement that developed in Europe and North America. It emphasizes ethical monotheism, adaptation of ritual practice, vernacular prayer, gender equality, and engagement with modern life."
+  },
+  "islamSunni": {
+    "name": "Islam",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "620 AD",
+    "parents": [
+      "judaism"
+    ],
+    "children": [
+      "islamShiite",
+      "sufism",
+      "sikhism"
+    ],
+    "description": "Islam is a monotheistic religion based on the Qur'an and the prophethood of Muhammad. Its core practices include testimony of faith, prayer, almsgiving, fasting in Ramadan, and pilgrimage to Mecca."
+  },
+  "islamShiite": {
+    "name": "Islam\n(Shiite)",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "858 AD",
+    "parents": [
+      "islamSunni"
+    ],
+    "children": [],
+    "description": "Shiite Islam is a major branch of Islam that gives special authority to Ali and the Imams as rightful spiritual leaders after Muhammad. Its traditions include distinctive law, theology, mourning rituals, and devotional practices."
+  },
+  "sufism": {
+    "name": "Sufism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "850 AD",
+    "parents": [
+      "islamSunni"
+    ],
+    "children": [],
+    "description": "Sufism is the mystical and devotional dimension of Islam, emphasizing purification of the heart, remembrance of God, spiritual guidance, poetry, music in some orders, and disciplined practice within lineages or tariqas."
+  },
+  "kabbalah": {
+    "name": "Kabbalah",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "1270 AD",
+    "parents": [
+      "judaism"
+    ],
+    "children": [],
+    "description": "Kabbalah is a Jewish mystical tradition concerned with divine emanations, creation, scripture, prayer, and spiritual transformation. Medieval works such as the Zohar shaped later Jewish, Christian, and occult interpretations."
+  },
+  "ayyavazhi": {
+    "name": "Ayyavazhi",
+    "area": "india",
+    "subtext": "",
+    "date": "1833 AD",
+    "parents": [],
+    "children": [],
+    "description": "Ayyavazhi is a South Indian religious movement centered on Ayya Vaikundar and the Akilathirattu Ammanai. It emerged in Tamil society with devotional, social reform, ritual, and apocalyptic themes."
+  },
+  "sikhism": {
+    "name": "Sikhism",
+    "area": "middleEast",
+    "subtext": "",
+    "date": "1500 AD",
+    "parents": [
+      "islamSunni"
+    ],
+    "children": [],
+    "description": "Sikhism is a monotheistic religion founded in Punjab by Guru Nanak and the Sikh Gurus. It emphasizes devotion to one God, equality, honest work, service, scripture, community, and the Khalsa tradition."
+  },
+  "theravada": {
+    "name": "Theravada\nBuddhism",
+    "area": "india",
+    "subtext": "",
+    "date": "250 BC",
+    "parents": [
+      "buddhism"
+    ],
+    "children": [],
+    "description": "Theravada Buddhism is a major Buddhist tradition dominant in Sri Lanka and mainland Southeast Asia. It emphasizes the Pali Canon, monastic discipline, meditation, merit-making, and the ideal of awakening as an arahant."
+  },
+  "mahayana": {
+    "name": "Mahayana\nBuddhism",
+    "area": "india",
+    "subtext": "",
+    "date": "100 AD",
+    "parents": [
+      "buddhism"
+    ],
+    "children": [],
+    "description": "Mahayana Buddhism is a broad Buddhist movement emphasizing bodhisattvas, compassion, wisdom, emptiness, and many scriptures beyond the early canon. It spread widely in East Asia and influenced many schools."
+  },
+  "vajrayana": {
+    "name": "Vajrayana\nBuddhism",
+    "area": "india",
+    "subtext": "",
+    "date": "600 AD",
+    "parents": [
+      "buddhism"
+    ],
+    "children": [],
+    "description": "Vajrayana Buddhism is a tantric form of Buddhism that uses mantra, visualization, ritual, mandalas, guru devotion, and deity yoga as accelerated paths to awakening. It is prominent in Tibetan and Himalayan traditions."
+  },
+  "bon": {
+    "name": "Bon",
+    "area": "india",
+    "subtext": "",
+    "date": "600 AD",
+    "parents": [
+      "buddhism"
+    ],
+    "children": [],
+    "description": "Bon is a Tibetan religious tradition with its own scriptures, rituals, monastic institutions, cosmology, and practices. It has interacted deeply with Tibetan Buddhism while preserving distinct origin stories and ritual identities."
+  },
+  "mormonism": {
+    "name": "Mormonism",
+    "area": "northAmerica",
+    "subtext": "",
+    "date": "1830 AD",
+    "parents": [],
+    "children": [],
+    "description": "Mormonism, or the Latter Day Saint movement, began with Joseph Smith and the Book of Mormon. It teaches restoration of primitive Christianity, modern revelation, priesthood authority, temple rites, and continuing scripture."
+  },
+  "scientology": {
+    "name": "Scientology",
+    "area": "northAmerica",
+    "subtext": "",
+    "date": "1954 AD",
+    "parents": [],
+    "children": [],
+    "description": "Scientology is a new religious movement founded by L. Ron Hubbard. It teaches that people are immortal spiritual beings called thetans and uses auditing, training, and organizational practices for spiritual advancement."
+  },
+  "haitianVoodoo": {
+    "name": "Haitian Voodoo",
+    "area": "northAmerica",
+    "subtext": "",
+    "date": "1685",
+    "parents": [],
+    "children": [],
+    "description": "Haitian Vodou is an Afro-Caribbean religion combining West and Central African traditions with Catholic and Indigenous influences. It centers on service to lwa spirits, ancestors, ritual song, drumming, possession, healing, and community."
+  },
+  "hoodoo": {
+    "name": "Hoodoo",
+    "area": "northAmerica",
+    "subtext": "",
+    "date": "1800 AD",
+    "parents": [],
+    "children": [],
+    "description": "Hoodoo is an African American folk magic and spiritual practice, not a church or single religion. It draws on African, Indigenous, European, and biblical traditions for protection, healing, luck, justice, and practical ritual work."
+  },
+  "inuit": {
+    "name": "Inuit\nShamanism",
+    "area": "northAmerica",
+    "subtext": "",
+    "date": "1000 AD",
+    "parents": [
+      "anasazi"
+    ],
+    "children": [],
+    "description": "Inuit religious traditions include relationships with animal spirits, sea and weather powers, ancestors, taboos, storytelling, and angakkuq ritual specialists. Practices vary across Arctic communities and changed through Christian contact."
+  },
+  "plateau": {
+    "name": "Plateau\nIndians\nShamanism",
+    "area": "northAmerica",
+    "subtext": "",
+    "date": "1500 AD",
+    "parents": [
+      "anasazi"
+    ],
+    "children": [],
+    "description": "Plateau Indigenous religious traditions of North America include guardian spirit quests, salmon and seasonal ceremonies, healing, vision experiences, and relationships with land, rivers, animals, and ancestors."
+  },
+  "plains": {
+    "name": "Plains\nIndians\nShamanism",
+    "area": "northAmerica",
+    "subtext": "",
+    "date": "1700 AD",
+    "parents": [
+      "anasazi"
+    ],
+    "children": [],
+    "description": "Plains Indigenous religious traditions include vision quests, sacred bundles, Sun Dance traditions, animal powers, healing, and ceremonial societies. Specific beliefs and rituals differ among Plains nations."
+  },
+  "mississippi": {
+    "name": "Mississippian\nShamanism",
+    "area": "northAmerica",
+    "subtext": "",
+    "date": "800 AD",
+    "parents": [
+      "hopi"
+    ],
+    "children": [],
+    "description": "Mississippian religion is inferred from mound centers, plazas, iconography, burials, and the Southeastern Ceremonial Complex. It likely involved sacred chiefs, ancestors, warfare, fertility, and cosmic order."
+  },
+  "pueblo": {
+    "name": "Pueblo\nShamanism",
+    "area": "northAmerica",
+    "subtext": "",
+    "date": "1450 AD",
+    "parents": [
+      "anasazi"
+    ],
+    "children": [],
+    "description": "Pueblo religious traditions include kachina or katsina ceremonies in some communities, agriculture, rainmaking, emergence narratives, sacred landscapes, clan responsibilities, and ceremonial calendars. Traditions vary among Pueblo peoples."
+  },
+  "iroquois": {
+    "name": "Iroquois\nShamanism",
+    "area": "northAmerica",
+    "subtext": "",
+    "date": "1000 AD",
+    "parents": [
+      "hopi"
+    ],
+    "children": [],
+    "description": "Haudenosaunee or Iroquois religious traditions include thanksgiving ceremonies, dreams, healing societies, clan responsibilities, and reverence for the Creator and spiritual forces. Longhouse religion remains important for many communities."
+  },
+  "macumba": {
+    "name": "Macumba",
+    "area": "southAmerica",
+    "subtext": "",
+    "date": "1900 AD",
+    "parents": [],
+    "children": [],
+    "description": "Macumba is a broad Brazilian term often used for Afro-Brazilian religious or magical practices. It may refer loosely to ritual work connected with spirits, ancestors, or deities, though the term can be imprecise or stigmatized."
+  },
+  "candomble": {
+    "name": "Candomble",
+    "area": "southAmerica",
+    "subtext": "",
+    "date": "1550 AD",
+    "parents": [],
+    "children": [],
+    "description": "Candomble is an Afro-Brazilian religion centered on orixas, voduns, or inquices, depending on nation. It includes initiation, drumming, dance, possession, offerings, divination, and temple communities."
+  },
+  "santeria": {
+    "name": "Santeria",
+    "area": "southAmerica",
+    "subtext": "",
+    "date": "1550 AD",
+    "parents": [],
+    "children": [],
+    "description": "Santeria, also called Lucumi, is an Afro-Cuban religion rooted in Yoruba traditions and shaped by Catholic and Caribbean contexts. It centers on orishas, divination, initiation, drumming, offerings, and spirit relationships."
+  },
+  "aztec": {
+    "name": "Aztec\nPolytheism",
+    "area": "centralAmerica",
+    "subtext": "",
+    "date": "1200 AD",
+    "parents": [
+      "teotihuacan"
+    ],
+    "children": [],
+    "description": "Aztec religion involved many gods, temple ritual, calendrical ceremonies, sacrifice, sacred warfare, agriculture, and cosmic renewal. Major deities included Huitzilopochtli, Tlaloc, Quetzalcoatl, Tezcatlipoca, and Coatlicue."
+  },
+  "incan": {
+    "name": "Incan\nPolytheism",
+    "area": "centralAmerica",
+    "subtext": "",
+    "date": "1100 AD",
+    "parents": [
+      "teotihuacan"
+    ],
+    "children": [],
+    "description": "Inca religion centered on the sun god Inti, creator Viracocha, sacred ancestors, huacas, royal ritual, sacrifice, divination, and state ceremonies linking empire, landscape, and divine authority."
+  },
+  "umbanda": {
+    "name": "Umbanda",
+    "area": "southAmerica",
+    "subtext": "",
+    "date": "1900 AD",
+    "parents": [],
+    "children": [],
+    "description": "Umbanda is a Brazilian religion that blends Afro-Brazilian, Spiritist, Catholic, and Indigenous elements. It centers on spirit incorporation, healing, moral development, guides, and ritual work in temple communities."
+  },
+  "santoDaime": {
+    "name": "Santo\nDaime",
+    "area": "southAmerica",
+    "subtext": "",
+    "date": "1930 AD",
+    "parents": [
+      "teotihuacan"
+    ],
+    "children": [],
+    "description": "Santo Daime is a Brazilian ayahuasca religion founded by Raimundo Irineu Serra. It combines Christian devotion, Amazonian plant sacrament, hymns, moral discipline, healing, and elements of Afro-Brazilian and Indigenous spirituality."
+  }
+};

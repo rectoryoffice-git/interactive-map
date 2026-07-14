@@ -1,0 +1,171 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #000;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  display: flex;
+}
+
+#map-app {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 100vh;
+  cursor: grab;
+  touch-action: none;
+}
+
+#map-app:active {
+  cursor: grabbing;
+}
+
+canvas {
+  display: block;
+}
+
+.ulc-logo {
+  position: fixed;
+  left: 50%;
+  bottom: 14px;
+  width: 86px;
+  height: 86px;
+  object-fit: contain;
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 10px rgba(28, 190, 123, 0.42)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.75));
+  pointer-events: none;
+  user-select: none;
+  z-index: 2;
+}
+
+.religion-detail {
+  position: relative;
+  flex: 0 0 0;
+  width: 0;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 0;
+  --detail-color: #1cbe7b;
+  --detail-color-soft: rgba(28, 190, 123, 0.55);
+  --detail-color-glow: rgba(28, 190, 123, 0.18);
+  border: 0 solid var(--detail-color-soft);
+  border-left-width: 0;
+  background: linear-gradient(180deg, rgba(5, 10, 8, 0.94), rgba(0, 0, 0, 0.96));
+  box-shadow: -1px 0 0 rgba(255, 255, 255, 0.07), -16px 0 48px rgba(0, 0, 0, 0.62), 0 0 26px var(--detail-color-glow);
+  backdrop-filter: blur(8px);
+  transform: none;
+  transition: flex-basis 180ms ease, width 180ms ease, padding 180ms ease, border-width 180ms ease, opacity 140ms ease;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.religion-detail.is-open {
+  flex-basis: min(390px, 38vw);
+  width: min(390px, 38vw);
+  padding: 22px 22px 24px;
+  border-left-width: 4px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.religion-detail__close {
+  position: absolute;
+  top: 7px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.religion-detail__close:hover {
+  border-color: var(--detail-color);
+  color: #fff;
+}
+
+.religion-detail h2 {
+  margin: 0 32px 4px 0;
+  font-size: 20px;
+  line-height: 1.15;
+  color: var(--detail-color);
+  text-shadow: 0 0 8px var(--detail-color-glow), 0 2px 0 #000;
+}
+
+.religion-detail__meta {
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.religion-detail p {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.religion-detail dl {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 12px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.religion-detail dt {
+  color: #d8b24d;
+  font-weight: 700;
+}
+
+.religion-detail dd {
+  margin: 0;
+}
+
+.religion-detail__empty {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 760px) {
+  body {
+    display: block;
+  }
+
+  #map-app {
+    width: 100vw;
+  }
+
+  .religion-detail {
+    position: fixed;
+    top: auto;
+    right: 12px;
+    bottom: 12px;
+    width: min(360px, calc(100vw - 24px));
+    height: auto;
+    max-height: min(420px, calc(100vh - 24px));
+    transform: translate(18px, 18px);
+    transition: transform 160ms ease, opacity 160ms ease;
+  }
+
+  .religion-detail.is-open {
+    width: min(360px, calc(100vw - 24px));
+    padding: 16px 17px 18px;
+    border-left-width: 4px;
+    transform: translate(0, 0);
+  }
+}
