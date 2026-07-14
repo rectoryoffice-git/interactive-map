@@ -119,6 +119,23 @@ canvas {
   color: rgba(255, 255, 255, 0.9);
 }
 
+.religion-detail__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 14px;
+}
+
+.religion-detail__tags span {
+  border: 1px solid var(--detail-color-soft);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.84);
+  padding: 3px 7px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
 .religion-detail dl {
   display: grid;
   grid-template-columns: max-content 1fr;
@@ -139,6 +156,87 @@ canvas {
 
 .religion-detail__empty {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.religion-detail__section {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin-top: 18px;
+  padding-top: 16px;
+}
+
+.religion-detail__section h3 {
+  margin: 0 0 10px;
+  color: var(--detail-color);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.religion-detail__note {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+}
+
+.religion-detail__cards {
+  display: grid;
+  gap: 10px;
+}
+
+.religion-detail__card {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 3px solid var(--detail-color-soft);
+  background: rgba(255, 255, 255, 0.035);
+  padding: 10px 11px;
+}
+
+.religion-detail__card h4 {
+  margin: 0 0 3px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.religion-detail__aka,
+.religion-detail__domain {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.religion-detail__domain {
+  color: #d8b24d;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.religion-detail__card p {
+  margin: 8px 0 0;
+  font-size: 13px;
+}
+
+.religion-detail__sources {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.religion-detail__sources li + li {
+  margin-top: 7px;
+}
+
+.religion-detail__sources a {
+  color: var(--detail-color);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.religion-detail__sources a:hover {
+  text-decoration: underline;
+}
+
+.religion-detail__sources span {
+  display: block;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 @media (max-width: 760px) {

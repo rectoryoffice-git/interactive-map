@@ -1,4 +1,4 @@
-window.RELIGIONS_DATA = {
+{
   "animism": {
     "name": "Animism",
     "area": "africa",
@@ -10769,4 +10769,4 @@ window.RELIGIONS_DATA = {
     ],
     "contestedClassification": false
   }
-};
+}

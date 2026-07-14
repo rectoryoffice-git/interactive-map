@@ -1,0 +1,1636 @@
+{
+  "title": "HUMAN TIMELINE OF MYTHOLOGY AND RELIGION",
+  "subtitle": "W E  A R E  A L L  C H I L D R E N  O F  T H E  S A M E  U N I V E R S E",
+  "rootId": "animism",
+  "religionsSource": "religions.json",
+  "world": {
+    "width": 1412,
+    "height": 1080
+  },
+  "palette": {
+    "europe": "#19b66e",
+    "africa": "#c8883d",
+    "middleEast": "#f6b331",
+    "india": "#f47a22",
+    "eastAsia": "#ef3447",
+    "arctic": "#f018a8",
+    "northAmerica": "#873aa3",
+    "centralAmerica": "#13a5df",
+    "southAmerica": "#23bde5",
+    "oceania": "#a8d442",
+    "australia": "#18bbbc",
+    "newGuinea": "#18bbbc",
+    "territories": "#159f8e",
+    "white": "#f8f5e9",
+    "axis": "#efe3bd",
+    "goldText": "#d3a35b"
+  },
+  "axis": {
+    "x": 64
+  },
+  "regions": [
+    {
+      "label": "EUROPE",
+      "color": "europe",
+      "x": 70,
+      "y": 114,
+      "width": 88
+    },
+    {
+      "label": "AFRICA",
+      "color": "africa",
+      "x": 159,
+      "y": 114,
+      "width": 82
+    },
+    {
+      "label": "MIDDLE EAST",
+      "color": "middleEast",
+      "x": 259.5,
+      "y": 114,
+      "width": 111
+    },
+    {
+      "label": "INDIA",
+      "color": "india",
+      "x": 360,
+      "y": 114,
+      "width": 82
+    },
+    {
+      "label": "EAST ASIA",
+      "color": "eastAsia",
+      "x": 461,
+      "y": 114,
+      "width": 112
+    },
+    {
+      "label": "ARCTIC",
+      "color": "arctic",
+      "x": 567.5,
+      "y": 114,
+      "width": 93
+    },
+    {
+      "label": "N. AMERICA",
+      "color": "northAmerica",
+      "x": 676.5,
+      "y": 114,
+      "width": 117
+    },
+    {
+      "label": "CENTRAL/MESOAMERICA",
+      "color": "centralAmerica",
+      "x": 840.5,
+      "y": 114,
+      "width": 203
+    },
+    {
+      "label": "S. AMERICA",
+      "color": "southAmerica",
+      "x": 998,
+      "y": 114,
+      "width": 104
+    },
+    {
+      "label": "NEW GUINEA/AUSTRALIA TERRITORIES",
+      "color": "territories",
+      "x": 1173.5,
+      "y": 114,
+      "width": 239
+    },
+    {
+      "label": "OCEANA",
+      "color": "oceania",
+      "x": 1346.5,
+      "y": 114,
+      "width": 99
+    }
+  ],
+  "timelineTicks": [
+    {
+      "label": "100,000 BC",
+      "y": 164
+    },
+    {
+      "label": "90,000 BC",
+      "y": 190
+    },
+    {
+      "label": "80,000 BC",
+      "y": 213
+    },
+    {
+      "label": "70,000 BC",
+      "y": 238
+    },
+    {
+      "label": "60,000 BC",
+      "y": 263
+    },
+    {
+      "label": "50,000 BC",
+      "y": 291
+    },
+    {
+      "label": "40,000 BC",
+      "y": 316
+    },
+    {
+      "label": "30,000 BC",
+      "y": 344
+    },
+    {
+      "label": "20,000 BC",
+      "y": 371
+    },
+    {
+      "label": "10,000 BC",
+      "y": 398
+    },
+    {
+      "label": "5000 BC",
+      "y": 448
+    },
+    {
+      "label": "4500 BC",
+      "y": 477
+    },
+    {
+      "label": "4000 BC",
+      "y": 505
+    },
+    {
+      "label": "3500 BC",
+      "y": 532
+    },
+    {
+      "label": "3000 BC",
+      "y": 559
+    },
+    {
+      "label": "2500 BC",
+      "y": 587
+    },
+    {
+      "label": "2000 BC",
+      "y": 614
+    },
+    {
+      "label": "1500 BC",
+      "y": 642
+    },
+    {
+      "label": "1000 BC",
+      "y": 670
+    },
+    {
+      "label": "500 BC",
+      "y": 698
+    },
+    {
+      "label": "0 AD",
+      "y": 725
+    },
+    {
+      "label": "250 AD",
+      "y": 773
+    },
+    {
+      "label": "500 AD",
+      "y": 800
+    },
+    {
+      "label": "750 AD",
+      "y": 830
+    },
+    {
+      "label": "1000 AD",
+      "y": 856
+    },
+    {
+      "label": "1250 AD",
+      "y": 884
+    },
+    {
+      "label": "1500 AD",
+      "y": 911
+    },
+    {
+      "label": "1750 AD",
+      "y": 938
+    },
+    {
+      "label": "2000 AD",
+      "y": 965
+    }
+  ],
+  "religions": [
+    {
+      "id": "animism",
+      "name": "Animism",
+      "date": "100,000 BC",
+      "region": "africa",
+      "position": {
+        "x": 418,
+        "y": 163
+      },
+      "parents": []
+    },
+    {
+      "id": "polyEurope",
+      "name": "Europe\nPolytheism",
+      "date": "40,000 BC",
+      "region": "europe",
+      "position": {
+        "x": 267,
+        "y": 302
+      },
+      "parents": [
+        "animism"
+      ]
+    },
+    {
+      "id": "san",
+      "name": "San\nAnimism",
+      "date": "40,000 BC",
+      "region": "africa",
+      "position": {
+        "x": 548,
+        "y": 314
+      },
+      "parents": []
+    },
+    {
+      "id": "middleSham",
+      "name": "Middle East\nShamanism",
+      "date": "12,500 BC",
+      "region": "middleEast",
+      "position": {
+        "x": 679,
+        "y": 315
+      },
+      "parents": [
+        "animism"
+      ]
+    },
+    {
+      "id": "centralAsian",
+      "name": "Central Asian\nShamanism",
+      "date": "12,500 BC",
+      "region": "india",
+      "position": {
+        "x": 793,
+        "y": 318
+      },
+      "parents": [
+        "middleSham"
+      ]
+    },
+    {
+      "id": "eastSouth",
+      "name": "East / South Asian\nShamanism",
+      "date": "10,000 BC",
+      "region": "eastAsia",
+      "position": {
+        "x": 888,
+        "y": 318
+      },
+      "parents": [
+        "centralAsian"
+      ]
+    },
+    {
+      "id": "fosna",
+      "name": "Fosna\nShamanism",
+      "date": "8000 BC",
+      "region": "arctic",
+      "position": {
+        "x": 1000,
+        "y": 319
+      },
+      "parents": [
+        "eastSouth"
+      ]
+    },
+    {
+      "id": "paleoIndian",
+      "name": "Paleo-Indian\nShamanism",
+      "date": "12,000 BC",
+      "region": "northAmerica",
+      "position": {
+        "x": 1110,
+        "y": 320
+      },
+      "parents": [
+        "fosna"
+      ]
+    },
+    {
+      "id": "aboriginal",
+      "name": "Aboriginal\nDreamtime",
+      "date": "40,000 BC",
+      "region": "australia",
+      "position": {
+        "x": 1226,
+        "y": 302
+      },
+      "parents": [
+        "animism"
+      ]
+    },
+    {
+      "id": "newGuinea",
+      "name": "New-Guinea\nAnimism",
+      "date": "40,000 BC",
+      "region": "newGuinea",
+      "position": {
+        "x": 1267,
+        "y": 301
+      },
+      "parents": [
+        "animism"
+      ]
+    },
+    {
+      "id": "protoIndo",
+      "name": "Proto-Indo\nEurope\nPolytheism",
+      "date": "3500 BC",
+      "region": "europe",
+      "position": {
+        "x": 267,
+        "y": 512
+      },
+      "parents": [
+        "animism"
+      ]
+    },
+    {
+      "id": "berber",
+      "name": "Berber\nAnimism",
+      "date": "9,000 BC",
+      "region": "africa",
+      "position": {
+        "x": 371,
+        "y": 390
+      },
+      "parents": [
+        "animism"
+      ]
+    },
+    {
+      "id": "yoruba",
+      "name": "Yoruba\nAnimism",
+      "date": "9,000 BC",
+      "region": "africa",
+      "position": {
+        "x": 464,
+        "y": 390
+      },
+      "parents": [
+        "animism"
+      ]
+    },
+    {
+      "id": "bantu",
+      "name": "Bantu\nAnimism",
+      "date": "3000 BC",
+      "region": "africa",
+      "position": {
+        "x": 371,
+        "y": 487
+      },
+      "parents": [
+        "animism"
+      ]
+    },
+    {
+      "id": "nilotic",
+      "name": "Nilotic\nAnimism",
+      "date": "3000 BC",
+      "region": "africa",
+      "position": {
+        "x": 464,
+        "y": 487
+      },
+      "parents": [
+        "animism"
+      ]
+    },
+    {
+      "id": "egyptian",
+      "name": "Egyptian\nPolytheism",
+      "date": "3000 BC",
+      "region": "middleEast",
+      "position": {
+        "x": 516,
+        "y": 487
+      },
+      "parents": [
+        "middleSham"
+      ]
+    },
+    {
+      "id": "indoIranian",
+      "name": "Indo-Iranian\nPolytheism",
+      "date": "2500 BC",
+      "region": "middleEast",
+      "position": {
+        "x": 648,
+        "y": 489
+      },
+      "parents": [
+        "protoIndo"
+      ]
+    },
+    {
+      "id": "mesopotamian",
+      "name": "Mesopotamian\nPolytheism",
+      "date": "4000 BC",
+      "region": "india",
+      "position": {
+        "x": 724,
+        "y": 451
+      },
+      "parents": [
+        "middleSham"
+      ]
+    },
+    {
+      "id": "canaanite",
+      "name": "Canaanite\nPolytheism",
+      "date": "3000 BC",
+      "region": "india",
+      "position": {
+        "x": 724,
+        "y": 505
+      },
+      "parents": [
+        "mesopotamian"
+      ]
+    },
+    {
+      "id": "hinduism",
+      "name": "Hinduism",
+      "date": "1000 BC",
+      "region": "india",
+      "position": {
+        "x": 754,
+        "y": 617
+      },
+      "parents": [
+        "vedic"
+      ]
+    },
+    {
+      "id": "chineseSham",
+      "name": "Wuism\n(Chinese\nShamanism)",
+      "date": "5000 BC",
+      "region": "eastAsia",
+      "position": {
+        "x": 842,
+        "y": 402
+      },
+      "parents": [
+        "eastSouth"
+      ]
+    },
+    {
+      "id": "muism",
+      "name": "Muism\n(Korean\nShamanism)",
+      "date": "4500 BC",
+      "region": "eastAsia",
+      "position": {
+        "x": 891,
+        "y": 454
+      },
+      "parents": [
+        "chineseSham"
+      ]
+    },
+    {
+      "id": "indus",
+      "name": "Indus\nValley\nShamanism",
+      "date": "3300 BC",
+      "region": "india",
+      "position": {
+        "x": 793,
+        "y": 489
+      },
+      "parents": [
+        "centralAsian"
+      ]
+    },
+    {
+      "id": "vedic",
+      "name": "Vedic\n(Early Hindu)\nPolytheism",
+      "date": "1700 BC",
+      "region": "india",
+      "position": {
+        "x": 848,
+        "y": 552
+      },
+      "parents": [
+        "indoIranian"
+      ]
+    },
+    {
+      "id": "sidea",
+      "name": "Sami\nShamanism",
+      "date": "2000 BC",
+      "region": "arctic",
+      "position": {
+        "x": 1035,
+        "y": 516
+      },
+      "parents": [
+        "fosna"
+      ]
+    },
+    {
+      "id": "finnish",
+      "name": "Finnish\nShamanism",
+      "date": "2000 BC",
+      "region": "arctic",
+      "position": {
+        "x": 959,
+        "y": 516
+      },
+      "parents": [
+        "fosna"
+      ]
+    },
+    {
+      "id": "siberia",
+      "name": "Seidis\nShamanism",
+      "date": "6000 BC",
+      "region": "arctic",
+      "position": {
+        "x": 1044,
+        "y": 391
+      },
+      "parents": [
+        "fosna"
+      ]
+    },
+    {
+      "id": "archaicIndians",
+      "name": "Archaic Indian\nShamanism",
+      "date": "4500 BC",
+      "region": "northAmerica",
+      "position": {
+        "x": 1110,
+        "y": 427
+      },
+      "parents": [
+        "paleoIndian"
+      ]
+    },
+    {
+      "id": "melanesian",
+      "name": "Melanesian\nAnimism",
+      "date": "1650 BC",
+      "region": "oceania",
+      "position": {
+        "x": 1280,
+        "y": 517
+      },
+      "parents": [
+        "archaicIndians"
+      ]
+    },
+    {
+      "id": "germanic",
+      "name": "Germanic\nPolytheism",
+      "date": "1700 BC",
+      "region": "europe",
+      "position": {
+        "x": 123,
+        "y": 608
+      },
+      "parents": [
+        "protoIndo"
+      ]
+    },
+    {
+      "id": "slavic",
+      "name": "Slavic\nPolytheism",
+      "date": "600 BC",
+      "region": "europe",
+      "position": {
+        "x": 176,
+        "y": 661
+      },
+      "parents": [
+        "protoIndo"
+      ]
+    },
+    {
+      "id": "baltic",
+      "name": "Baltic\nPolytheism",
+      "date": "2000 BC",
+      "region": "europe",
+      "position": {
+        "x": 223,
+        "y": 592
+      },
+      "parents": [
+        "protoIndo"
+      ]
+    },
+    {
+      "id": "celtic",
+      "name": "Celtic\nPolytheism",
+      "date": "500 BC",
+      "region": "europe",
+      "position": {
+        "x": 267,
+        "y": 671
+      },
+      "parents": [
+        "protoIndo"
+      ]
+    },
+    {
+      "id": "greek",
+      "name": "Greek\nPolytheism",
+      "date": "1000 BC",
+      "region": "europe",
+      "position": {
+        "x": 430,
+        "y": 593
+      },
+      "parents": [
+        "protoIndo"
+      ],
+      "offset": {
+        "y": -28
+      }
+    },
+    {
+      "id": "grecoRoman",
+      "name": "Greco-Roman\nMystery Cults",
+      "date": "750 BC",
+      "region": "europe",
+      "position": {
+        "x": 430,
+        "y": 623
+      },
+      "parents": [
+        "greek"
+      ],
+      "offset": {
+        "y": 6
+      }
+    },
+    {
+      "id": "hellenism",
+      "name": "Hellenism",
+      "date": "300 BC",
+      "region": "europe",
+      "position": {
+        "x": 378,
+        "y": 690
+      },
+      "parents": [
+        "grecoRoman"
+      ],
+      "offset": {
+        "y": 30
+      }
+    },
+    {
+      "id": "hermeticism",
+      "name": "Hermeticism",
+      "date": "100 AD",
+      "region": "europe",
+      "position": {
+        "x": 335,
+        "y": 724
+      },
+      "parents": [
+        "greek"
+      ],
+      "offset": {
+        "y": 8
+      }
+    },
+    {
+      "id": "neoPlatonism",
+      "name": "Neo-Platonism",
+      "date": "250 AD",
+      "region": "europe",
+      "position": {
+        "x": 411,
+        "y": 724
+      },
+      "parents": [
+        "grecoRoman"
+      ],
+      "offset": {
+        "y": 8
+      }
+    },
+    {
+      "id": "gnosticism",
+      "name": "Gnosticism",
+      "date": "100 AD",
+      "region": "middleEast",
+      "position": {
+        "x": 464,
+        "y": 663
+      },
+      "parents": [
+        "grecoRoman"
+      ],
+      "offset": {
+        "y": -4
+      }
+    },
+    {
+      "id": "bogomilism",
+      "name": "Bogomilism",
+      "date": "940 AD",
+      "region": "middleEast",
+      "position": {
+        "x": 464,
+        "y": 663
+      },
+      "parents": [
+        "gnosticism"
+      ],
+      "offset": {
+        "y": -4
+      }
+    },
+    {
+      "id": "ethiopian",
+      "name": "Ethiopian\nPolytheism",
+      "date": "900 BC",
+      "region": "africa",
+      "position": {
+        "x": 464,
+        "y": 581
+      },
+      "parents": []
+    },
+    {
+      "id": "zoroastrianism",
+      "name": "Zoroastrianism",
+      "date": "1100 BC",
+      "region": "middleEast",
+      "position": {
+        "x": 554,
+        "y": 611
+      },
+      "parents": [
+        "nilotic"
+      ]
+    },
+    {
+      "id": "mithraism",
+      "name": "Mithraism",
+      "date": "100 AD",
+      "region": "middleEast",
+      "position": {
+        "x": 554,
+        "y": 682
+      },
+      "parents": [
+        "zoroastrianism"
+      ]
+    },
+    {
+      "id": "christianity",
+      "name": "Christianity",
+      "date": "33 AD",
+      "region": "middleEast",
+      "position": {
+        "x": 613,
+        "y": 681
+      },
+      "parents": [
+        "judaism"
+      ]
+    },
+    {
+      "id": "atenism",
+      "name": "Atenism",
+      "date": "1348 BC",
+      "region": "middleEast",
+      "position": {
+        "x": 610,
+        "y": 615
+      },
+      "parents": []
+    },
+    {
+      "id": "judaism",
+      "name": "Judaism",
+      "date": "950 BC",
+      "region": "middleEast",
+      "position": {
+        "x": 679,
+        "y": 621
+      },
+      "parents": [
+        "phoenician"
+      ]
+    },
+    {
+      "id": "hellenisticJudaism",
+      "name": "Hellenistic\nJudaism",
+      "date": "300 BC",
+      "region": "middleEast",
+      "position": {
+        "x": 679,
+        "y": 682
+      },
+      "parents": [
+        "judaism"
+      ]
+    },
+    {
+      "id": "phoenician",
+      "name": "Phoenician\nPolytheism",
+      "date": "2000 BC",
+      "region": "middleEast",
+      "position": {
+        "x": 679,
+        "y": 554
+      },
+      "parents": [
+        "middleSham"
+      ]
+    },
+    {
+      "id": "buddhism",
+      "name": "Buddhism",
+      "date": "520 BC",
+      "region": "india",
+      "position": {
+        "x": 848,
+        "y": 636
+      },
+      "parents": [
+        "vedic"
+      ]
+    },
+    {
+      "id": "jainism",
+      "name": "Jainism",
+      "date": "1000 BC",
+      "region": "india",
+      "position": {
+        "x": 793,
+        "y": 635
+      },
+      "parents": [
+        "vedic"
+      ]
+    },
+    {
+      "id": "taoism",
+      "name": "Taoism",
+      "date": "500 BC",
+      "region": "eastAsia",
+      "position": {
+        "x": 891,
+        "y": 663
+      },
+      "parents": [
+        "muism"
+      ]
+    },
+    {
+      "id": "shinto",
+      "name": "Shinto",
+      "date": "500 BC",
+      "region": "eastAsia",
+      "position": {
+        "x": 936,
+        "y": 664
+      },
+      "parents": [
+        "muism"
+      ]
+    },
+    {
+      "id": "confucianism",
+      "name": "Confucianism",
+      "date": "500 BC",
+      "region": "eastAsia",
+      "position": {
+        "x": 981,
+        "y": 664
+      },
+      "parents": [
+        "muism"
+      ]
+    },
+    {
+      "id": "tengrism",
+      "name": "Tengrism",
+      "date": "300 BC",
+      "region": "eastAsia",
+      "position": {
+        "x": 1024,
+        "y": 664
+      },
+      "parents": [
+        "muism"
+      ]
+    },
+    {
+      "id": "hopi",
+      "name": "Hopewell\nShamanism",
+      "date": "200 BC",
+      "region": "northAmerica",
+      "position": {
+        "x": 1110,
+        "y": 634
+      },
+      "parents": [
+        "archaicIndians"
+      ]
+    },
+    {
+      "id": "anasazi",
+      "name": "Anasazi\nShamanism",
+      "date": "1200 BC",
+      "region": "northAmerica",
+      "position": {
+        "x": 1077,
+        "y": 607
+      },
+      "parents": [
+        "archaicIndians"
+      ]
+    },
+    {
+      "id": "olmec",
+      "name": "Olmec\nShamanism",
+      "date": "1500 BC",
+      "region": "centralAmerica",
+      "position": {
+        "x": 1170,
+        "y": 608
+      },
+      "parents": [
+        "archaicIndians"
+      ]
+    },
+    {
+      "id": "mayan",
+      "name": "Mayan\nPolytheism",
+      "date": "250 BC",
+      "region": "centralAmerica",
+      "position": {
+        "x": 1168,
+        "y": 685
+      },
+      "parents": []
+    },
+    {
+      "id": "teotihuacan",
+      "name": "Teotihuacan\nPolytheism",
+      "date": "100 BC",
+      "region": "centralAmerica",
+      "position": {
+        "x": 1226,
+        "y": 711
+      },
+      "parents": [
+        "olmec"
+      ]
+    },
+    {
+      "id": "polynesian",
+      "name": "Polynesian\nAnimism",
+      "date": "1650 BC",
+      "region": "oceania",
+      "position": {
+        "x": 1320,
+        "y": 616
+      },
+      "parents": [
+        "archaicIndians"
+      ]
+    },
+    {
+      "id": "micronesian",
+      "name": "Micronesian\nAnimism",
+      "date": "1200 BC",
+      "region": "oceania",
+      "position": {
+        "x": 1359,
+        "y": 615
+      },
+      "parents": [
+        "archaicIndians"
+      ]
+    },
+    {
+      "id": "norse",
+      "name": "Norse\nPolytheism",
+      "date": "200 AD",
+      "region": "europe",
+      "position": {
+        "x": 123,
+        "y": 705
+      },
+      "parents": [
+        "germanic"
+      ]
+    },
+    {
+      "id": "asatru",
+      "name": "Asatru",
+      "date": "1870 AD",
+      "region": "europe",
+      "position": {
+        "x": 123,
+        "y": 876
+      },
+      "parents": [
+        "norse"
+      ]
+    },
+    {
+      "id": "rodnovery",
+      "name": "Rodnovery",
+      "date": "1890 AD",
+      "region": "europe",
+      "position": {
+        "x": 176,
+        "y": 876
+      },
+      "parents": [
+        "slavic"
+      ]
+    },
+    {
+      "id": "romuva",
+      "name": "Romuva",
+      "date": "1890 AD",
+      "region": "europe",
+      "position": {
+        "x": 223,
+        "y": 876
+      },
+      "parents": [
+        "baltic"
+      ]
+    },
+    {
+      "id": "druidism",
+      "name": "Druidism",
+      "date": "1772 AD",
+      "region": "europe",
+      "position": {
+        "x": 266,
+        "y": 876
+      },
+      "parents": [
+        "celtic"
+      ]
+    },
+    {
+      "id": "wicca",
+      "name": "Wicca",
+      "date": "1954 AD",
+      "region": "europe",
+      "position": {
+        "x": 300,
+        "y": 876
+      },
+      "nameOffset": {
+        "x": -6
+      },
+      "parents": [
+        "theosophy"
+      ]
+    },
+    {
+      "id": "thelema",
+      "name": "Thelema",
+      "date": "1904 AD",
+      "region": "europe",
+      "position": {
+        "x": 372,
+        "y": 876
+      },
+      "nameOffset": {
+        "x": -3
+      },
+      "parents": [
+        "tsao"
+      ]
+    },
+    {
+      "id": "theosophy",
+      "name": "Theosophy",
+      "date": "1875 AD",
+      "region": "europe",
+      "position": {
+        "x": 411,
+        "y": 791
+      },
+      "nameOffset": {
+        "x": -6
+      },
+      "dateOffset": {
+        "x": -10
+      },
+      "parents": [
+        "neoPlatonism"
+      ]
+    },
+    {
+      "id": "rosicrucian",
+      "name": "Rosicrucian",
+      "date": "1407 AD",
+      "region": "europe",
+      "position": {
+        "x": 336,
+        "y": 817
+      },
+      "parents": [
+        "theosophy"
+      ]
+    },
+    {
+      "id": "tsao",
+      "name": "Golden\nDawn",
+      "date": "1887 AD",
+      "region": "europe",
+      "position": {
+        "x": 444,
+        "y": 876
+      },
+      "parents": [
+        "theosophy"
+      ],
+      "nameOffset": {
+        "x": 4
+      },
+      "dateOffset": {
+        "x": 12
+      }
+    },
+    {
+      "id": "anthroposophy",
+      "name": "Anthroposophy",
+      "date": "1912 AD",
+      "region": "europe",
+      "position": {
+        "x": 480,
+        "y": 876
+      },
+      "parents": [
+        "tsao"
+      ],
+      "nameOffset": {
+        "x": 6
+      },
+      "dateOffset": {
+        "x": 6
+      }
+    },
+    {
+      "id": "catharism",
+      "name": "Catharism",
+      "date": "1143 AD",
+      "region": "middleEast",
+      "position": {
+        "x": 464,
+        "y": 816
+      },
+      "parents": [
+        "bogomilism"
+      ]
+    },
+    {
+      "id": "manichaeism",
+      "name": "Manichaeism",
+      "date": "270 AD",
+      "region": "middleEast",
+      "position": {
+        "x": 505,
+        "y": 734
+      },
+      "parents": [
+        "nilotic"
+      ]
+    },
+    {
+      "id": "catholicism",
+      "name": "Catholicism",
+      "date": "1054 AD",
+      "region": "middleEast",
+      "position": {
+        "x": 613,
+        "y": 763
+      },
+      "parents": [
+        "christianity"
+      ]
+    },
+    {
+      "id": "eastOrthodox",
+      "name": "East Orthodox",
+      "date": "1054 AD",
+      "region": "middleEast",
+      "position": {
+        "x": 574,
+        "y": 763
+      },
+      "parents": [
+        "christianity"
+      ]
+    },
+    {
+      "id": "protestant",
+      "name": "Protestantism",
+      "date": "1517 AD",
+      "region": "middleEast",
+      "position": {
+        "x": 541,
+        "y": 847
+      },
+      "parents": [
+        "catholicism"
+      ]
+    },
+    {
+      "id": "africanPoly",
+      "name": "African\nPolytheism",
+      "date": "1550 AD",
+      "region": "africa",
+      "position": {
+        "x": 505,
+        "y": 876
+      },
+      "parents": [
+        "manichaeism"
+      ]
+    },
+    {
+      "id": "bahai",
+      "name": "Baha'i Faith",
+      "date": "1844 AD",
+      "region": "middleEast",
+      "position": {
+        "x": 574,
+        "y": 876
+      },
+      "parents": []
+    },
+    {
+      "id": "reformJudaism",
+      "name": "Reform\nJudaism",
+      "date": "1809 AD",
+      "region": "middleEast",
+      "position": {
+        "x": 650,
+        "y": 876
+      },
+      "parents": [
+        "judaism"
+      ]
+    },
+    {
+      "id": "islamSunni",
+      "name": "Islam",
+      "date": "620 AD",
+      "region": "middleEast",
+      "position": {
+        "x": 724,
+        "y": 681
+      },
+      "parents": [
+        "judaism"
+      ]
+    },
+    {
+      "id": "islamShiite",
+      "name": "Islam\n(Shiite)",
+      "date": "858 AD",
+      "region": "middleEast",
+      "position": {
+        "x": 701.5,
+        "y": 762
+      },
+      "parents": [
+        "islamSunni"
+      ]
+    },
+    {
+      "id": "sufism",
+      "name": "Sufism",
+      "date": "850 AD",
+      "region": "middleEast",
+      "position": {
+        "x": 724,
+        "y": 762
+      },
+      "parents": [
+        "islamSunni"
+      ]
+    },
+    {
+      "id": "kabbalah",
+      "name": "Kabbalah",
+      "date": "1270 AD",
+      "region": "middleEast",
+      "position": {
+        "x": 679,
+        "y": 837
+      },
+      "parents": [
+        "judaism"
+      ]
+    },
+    {
+      "id": "ayyavazhi",
+      "name": "Ayyavazhi",
+      "date": "1833 AD",
+      "region": "india",
+      "position": {
+        "x": 740,
+        "y": 876
+      },
+      "parents": []
+    },
+    {
+      "id": "sikhism",
+      "name": "Sikhism",
+      "date": "1500 AD",
+      "region": "middleEast",
+      "position": {
+        "x": 793,
+        "y": 792
+      },
+      "parents": [
+        "islamSunni"
+      ]
+    },
+    {
+      "id": "theravada",
+      "name": "Theravada\nBuddhism",
+      "date": "250 BC",
+      "region": "india",
+      "position": {
+        "x": 781,
+        "y": 719
+      },
+      "parents": [
+        "buddhism"
+      ]
+    },
+    {
+      "id": "mahayana",
+      "name": "Mahayana\nBuddhism",
+      "date": "100 AD",
+      "region": "india",
+      "position": {
+        "x": 848,
+        "y": 760
+      },
+      "parents": [
+        "buddhism"
+      ]
+    },
+    {
+      "id": "vajrayana",
+      "name": "Vajrayana\nBuddhism",
+      "date": "600 AD",
+      "region": "india",
+      "position": {
+        "x": 824,
+        "y": 761
+      },
+      "parents": [
+        "buddhism"
+      ]
+    },
+    {
+      "id": "bon",
+      "name": "Bon",
+      "date": "600 AD",
+      "region": "india",
+      "position": {
+        "x": 876,
+        "y": 735
+      },
+      "parents": [
+        "buddhism"
+      ]
+    },
+    {
+      "id": "mormonism",
+      "name": "Mormonism",
+      "date": "1830 AD",
+      "region": "northAmerica",
+      "position": {
+        "x": 794,
+        "y": 876
+      },
+      "parents": []
+    },
+    {
+      "id": "scientology",
+      "name": "Scientology",
+      "date": "1954 AD",
+      "region": "northAmerica",
+      "position": {
+        "x": 872,
+        "y": 876
+      },
+      "parents": []
+    },
+    {
+      "id": "haitianVoodoo",
+      "name": "Haitian Voodoo",
+      "date": "1685",
+      "region": "northAmerica",
+      "position": {
+        "x": 871,
+        "y": 822
+      },
+      "parents": []
+    },
+    {
+      "id": "hoodoo",
+      "name": "Hoodoo",
+      "date": "1800 AD",
+      "region": "northAmerica",
+      "position": {
+        "x": 924,
+        "y": 876
+      },
+      "parents": []
+    },
+    {
+      "id": "inuit",
+      "name": "Inuit\nShamanism",
+      "date": "1000 AD",
+      "region": "northAmerica",
+      "position": {
+        "x": 924,
+        "y": 792
+      },
+      "parents": [
+        "anasazi"
+      ]
+    },
+    {
+      "id": "plateau",
+      "name": "Plateau\nIndians\nShamanism",
+      "date": "1500 AD",
+      "region": "northAmerica",
+      "position": {
+        "x": 981,
+        "y": 848
+      },
+      "parents": [
+        "anasazi"
+      ]
+    },
+    {
+      "id": "plains",
+      "name": "Plains\nIndians\nShamanism",
+      "date": "1700 AD",
+      "region": "northAmerica",
+      "position": {
+        "x": 1023,
+        "y": 876
+      },
+      "parents": [
+        "anasazi"
+      ]
+    },
+    {
+      "id": "mississippi",
+      "name": "Mississippian\nShamanism",
+      "date": "800 AD",
+      "region": "northAmerica",
+      "position": {
+        "x": 1110,
+        "y": 793
+      },
+      "parents": [
+        "hopi"
+      ]
+    },
+    {
+      "id": "pueblo",
+      "name": "Pueblo\nShamanism",
+      "date": "1450 AD",
+      "region": "northAmerica",
+      "position": {
+        "x": 1077,
+        "y": 847
+      },
+      "parents": [
+        "anasazi"
+      ]
+    },
+    {
+      "id": "iroquois",
+      "name": "Iroquois\nShamanism",
+      "date": "1000 AD",
+      "region": "northAmerica",
+      "position": {
+        "x": 1176,
+        "y": 793
+      },
+      "parents": [
+        "hopi"
+      ]
+    },
+    {
+      "id": "macumba",
+      "name": "Macumba",
+      "date": "1900 AD",
+      "region": "southAmerica",
+      "position": {
+        "x": 1077,
+        "y": 876
+      },
+      "parents": []
+    },
+    {
+      "id": "candomble",
+      "name": "Candomble",
+      "date": "1550 AD",
+      "region": "southAmerica",
+      "position": {
+        "x": 1158,
+        "y": 876
+      },
+      "parents": []
+    },
+    {
+      "id": "santeria",
+      "name": "Santeria",
+      "date": "1550 AD",
+      "region": "southAmerica",
+      "position": {
+        "x": 1188,
+        "y": 876
+      },
+      "parents": []
+    },
+    {
+      "id": "aztec",
+      "name": "Aztec\nPolytheism",
+      "date": "1200 AD",
+      "region": "centralAmerica",
+      "position": {
+        "x": 1270,
+        "y": 820
+      },
+      "parents": [
+        "teotihuacan"
+      ]
+    },
+    {
+      "id": "incan",
+      "name": "Incan\nPolytheism",
+      "date": "1100 AD",
+      "region": "centralAmerica",
+      "position": {
+        "x": 1320,
+        "y": 820
+      },
+      "parents": [
+        "teotihuacan"
+      ]
+    },
+    {
+      "id": "umbanda",
+      "name": "Umbanda",
+      "date": "1900 AD",
+      "region": "southAmerica",
+      "position": {
+        "x": 1280,
+        "y": 876
+      },
+      "parents": []
+    },
+    {
+      "id": "santoDaime",
+      "name": "Santo\nDaime",
+      "date": "1930 AD",
+      "region": "southAmerica",
+      "position": {
+        "x": 1320,
+        "y": 876
+      },
+      "parents": [
+        "teotihuacan"
+      ]
+    }
+  ]
+}

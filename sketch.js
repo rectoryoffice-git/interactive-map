@@ -45,7 +45,7 @@ function preload() {
   if (window.RELIGIONS_DATA) {
     religionDetails = window.RELIGIONS_DATA;
   } else {
-    religionDetails = loadJSON("religions.json?v=20260713-religion-info");
+    religionDetails = loadJSON("new-religion-data.json?v=20260714-rich-sidebar");
   }
 }
 
@@ -505,7 +505,7 @@ function bindDetailPanel() {
 }
 
 function refreshReligionDetailsFromJson() {
-  fetch(`religions.json?v=${Date.now()}`)
+  fetch(`new-religion-data.json?v=${Date.now()}`)
     .then((response) => (response.ok ? response.json() : null))
     .then((data) => {
       if (!data) return;
@@ -537,12 +537,15 @@ function renderReligionDetail(node) {
   const description = details.description || "No description has been added yet.";
   const parents = formatLinkedReligionList(details.parents || node.parents || []);
   const children = formatLinkedReligionList(details.children || []);
+  const gods = details.gods || [];
+  const sources = details.sources || [];
   const detailColor = colorFor(node);
   setDetailPanelColor(panel, detailColor);
 
   content.innerHTML = `
     <h2>${escapeHtml(formatDisplayName(name))}</h2>
     <div class="religion-detail__meta">${escapeHtml([date, formatAreaName(area)].filter(Boolean).join(" · "))}</div>
+    ${renderFactTags(details)}
     <p>${escapeHtml(description)}</p>
     <dl>
       <dt>Parents</dt>
@@ -550,6 +553,8 @@ function renderReligionDetail(node) {
       <dt>Children</dt>
       <dd>${children}</dd>
     </dl>
+    ${renderGodsSection(gods, details.godsNote)}
+    ${renderSourcesSection(sources)}
   `;
   panel.classList.add("is-open");
   panel.setAttribute("aria-hidden", "false");
@@ -580,6 +585,76 @@ function scheduleMapResize() {
   window.setTimeout(resizeCanvasToMap, 200);
 }
 
+function renderFactTags(details) {
+  const facts = [
+    details.status && `Status: ${formatTrait(details.status)}`,
+    details.family && `Family: ${formatTrait(details.family)}`,
+    ...(details.theology || []).map((item) => `Theology: ${formatTrait(item)}`),
+    ...(details.originType || []).map((item) => `Origin: ${formatTrait(item)}`),
+    ...(details.practices || []).map((item) => `Practice: ${formatTrait(item)}`),
+    details.contestedClassification ? "Classification contested" : null,
+  ].filter(Boolean);
+
+  if (!facts.length) return "";
+  return `
+    <div class="religion-detail__tags">
+      ${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join("")}
+    </div>
+  `;
+}
+
+function renderGodsSection(gods, godsNote) {
+  if (!gods.length && !godsNote) return "";
+  return `
+    <section class="religion-detail__section">
+      <h3>Figures and Powers</h3>
+      ${godsNote ? `<p class="religion-detail__note">${escapeHtml(godsNote)}</p>` : ""}
+      ${gods.length ? `<div class="religion-detail__cards">${gods.map(renderGodCard).join("")}</div>` : ""}
+    </section>
+  `;
+}
+
+function renderGodCard(god) {
+  const aka = god.aka?.length ? `<div class="religion-detail__aka">${escapeHtml(god.aka.join(", "))}</div>` : "";
+  const domain = god.domain ? `<div class="religion-detail__domain">${escapeHtml(god.domain)}</div>` : "";
+  return `
+    <article class="religion-detail__card">
+      <h4>${escapeHtml(god.name || "Unnamed figure")}</h4>
+      ${aka}
+      ${domain}
+      ${god.description ? `<p>${escapeHtml(god.description)}</p>` : ""}
+    </article>
+  `;
+}
+
+function renderSourcesSection(sources) {
+  if (!sources.length) return "";
+  return `
+    <section class="religion-detail__section">
+      <h3>Sources</h3>
+      <ol class="religion-detail__sources">
+        ${sources.map(renderSourceItem).join("")}
+      </ol>
+    </section>
+  `;
+}
+
+function renderSourceItem(source) {
+  const title = source.title || source.container || "Source";
+  const container = source.container ? ` <span>${escapeHtml(source.container)}</span>` : "";
+  const author = source.author ? `<span>${escapeHtml(source.author)}</span>` : "";
+  const link = source.link
+    ? `<a href="${escapeAttribute(source.link)}" target="_blank" rel="noreferrer">${escapeHtml(title)}</a>`
+    : escapeHtml(title);
+  return `<li>${link}${container}${author}</li>`;
+}
+
+function formatTrait(value) {
+  return String(value || "")
+    .replace(/-/g, " ")
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
 function formatLinkedReligionList(ids) {
   if (!ids.length) return '<span class="religion-detail__empty">None</span>';
   return ids
@@ -607,6 +682,10 @@ function escapeHtml(value) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
+}
+
+function escapeAttribute(value) {
+  return escapeHtml(value).replace(/`/g, "&#96;");
 }
 
 function drawTitleText(target) {
@@ -1266,7 +1345,7 @@ function drawOutlinedText(content, x, y, fillColor, outlineWeight) {
 }
 
 function fitInitialView() {
-  view.scale = min(width / mapData.world.width, height / mapData.world.height) * 1.08;
+  view.scale = min(width / mapData.world.width, height / mapData.world.height) * 0.92;
   view.x = (width - mapData.world.width * view.scale) / 2;
   view.y = 0;
   targetView = { ...view };
