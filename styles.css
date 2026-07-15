@@ -1,3 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap");
+
+@font-face {
+  font-family: "Papyrus Local";
+  src: url("papyrus.ttf") format("truetype");
+  font-display: swap;
+}
+
 html,
 body {
   width: 100%;
@@ -6,7 +14,16 @@ body {
   overflow: hidden;
   background: #000;
   color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Papyrus Local", Papyrus, fantasy;
 }
 
 body {
@@ -29,51 +46,113 @@ canvas {
   display: block;
 }
 
-.ulc-logo {
+.ulc-logo-wrap {
   position: fixed;
   left: 50%;
   bottom: 14px;
   width: 86px;
   height: 86px;
-  object-fit: contain;
   transform: translateX(-50%);
-  filter: drop-shadow(0 0 10px rgba(28, 190, 123, 0.42)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.75));
   pointer-events: none;
-  user-select: none;
   z-index: 2;
 }
 
-.religion-detail {
+.ulc-logo {
   position: relative;
-  flex: 0 0 0;
-  width: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  z-index: 1;
+  animation: ulc-logo-breathe 4.6s ease-in-out infinite;
+}
+
+.ulc-logo-halo {
+  position: absolute;
+  inset: 9px;
+  border-radius: 50%;
+  background: rgba(28, 190, 123, 0.38);
+  filter: blur(15px);
+  will-change: transform, opacity;
+  transition: background-color 1s ease-in-out;
+  animation: ulc-logo-halo 4.6s ease-in-out infinite;
+}
+
+@keyframes ulc-logo-breathe {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px rgba(28, 190, 123, 0.32)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.75));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(28, 190, 123, 0.72)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.75));
+  }
+}
+
+@keyframes ulc-logo-halo {
+  0%,
+  100% {
+    opacity: 0.28;
+    transform: scale(0.82);
+  }
+  50% {
+    opacity: 0.82;
+    transform: scale(1.24);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ulc-logo,
+  .ulc-logo-halo {
+    animation: none;
+  }
+}
+
+.religion-detail {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(470px, 44vw);
   height: 100vh;
   max-height: 100vh;
-  overflow: auto;
+  overflow: hidden;
   box-sizing: border-box;
-  padding: 0;
+  padding: 24px 26px 28px;
   --detail-color: #1cbe7b;
   --detail-color-soft: rgba(28, 190, 123, 0.55);
   --detail-color-glow: rgba(28, 190, 123, 0.18);
-  border: 0 solid var(--detail-color-soft);
-  border-left-width: 0;
-  background: linear-gradient(180deg, rgba(5, 10, 8, 0.94), rgba(0, 0, 0, 0.96));
+  --detail-color-bg: rgba(28, 190, 123, 0.15);
+  --detail-color-light: #8ee3bf;
+  border-left: 4px solid var(--detail-color);
+  background: linear-gradient(180deg, #09110e 0%, #030504 48%, #000 100%);
   box-shadow: -1px 0 0 rgba(255, 255, 255, 0.07), -16px 0 48px rgba(0, 0, 0, 0.62), 0 0 26px var(--detail-color-glow);
   backdrop-filter: blur(8px);
-  transform: none;
-  transition: flex-basis 180ms ease, width 180ms ease, padding 180ms ease, border-width 180ms ease, opacity 140ms ease;
+  transform: translateX(100%);
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1), opacity 160ms ease;
   opacity: 0;
   pointer-events: none;
   z-index: 3;
 }
 
 .religion-detail.is-open {
-  flex-basis: min(390px, 38vw);
-  width: min(390px, 38vw);
-  padding: 22px 22px 24px;
-  border-left-width: 4px;
+  transform: translateX(0);
   opacity: 1;
   pointer-events: auto;
+}
+
+#religion-detail-content {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--detail-color) rgba(255, 255, 255, 0.08);
+  padding-right: 8px;
+}
+
+#religion-detail-content::-webkit-scrollbar { width: 8px; }
+#religion-detail-content::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.06); }
+#religion-detail-content::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: var(--detail-color);
 }
 
 .religion-detail__close {
@@ -98,9 +177,11 @@ canvas {
 
 .religion-detail h2 {
   margin: 0 32px 4px 0;
+  font-family: "Papyrus Local", Papyrus, fantasy;
   font-size: 20px;
   line-height: 1.15;
   color: var(--detail-color);
+  text-transform: uppercase;
   text-shadow: 0 0 8px var(--detail-color-glow), 0 2px 0 #000;
 }
 
@@ -116,46 +197,97 @@ canvas {
   margin: 0 0 14px;
   font-size: 14px;
   line-height: 1.45;
-  color: rgba(255, 255, 255, 0.9);
+  color: #f1f4f2;
 }
 
-.religion-detail__tags {
+.religion-detail__tags,
+.religion-detail__meta-pills {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin: 0 0 14px;
 }
 
-.religion-detail__tags span {
-  border: 1px solid var(--detail-color-soft);
-  background: rgba(255, 255, 255, 0.04);
-  color: rgba(255, 255, 255, 0.84);
-  padding: 3px 7px;
+.religion-detail__tags span,
+.religion-detail__meta-pills span,
+.religion-detail__relation {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 999px;
+  border: 1px solid var(--detail-color);
+  background: var(--detail-color-bg);
+  color: var(--detail-color);
+  padding: 6px 10px;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.2;
+  font-variant: all-small-caps;
 }
 
-.religion-detail dl {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: 8px 12px;
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.35;
+.religion-detail__tags small,
+.religion-detail__relation small {
+  margin: 0 0 1px;
+  font-size: 9px;
+  font-variant: all-small-caps;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
 }
 
-.religion-detail dt {
-  color: #d8b24d;
-  font-weight: 700;
+.religion-detail__meta-pills { margin: 10px 0 14px; }
+.religion-detail__meta-pills span { align-items: center; }
+
+.religion-detail__description p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  margin-bottom: 5px;
 }
 
-.religion-detail dd {
-  margin: 0;
+.religion-detail__description p.is-expanded { display: block; }
+
+.religion-detail__read-more {
+  margin: 0 0 16px;
+  padding: 5px 10px;
+  border: 1px solid var(--detail-color);
+  border-radius: 999px;
+  background: var(--detail-color-bg);
+  color: var(--detail-color);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  font-variant: all-small-caps;
+  cursor: pointer;
+}
+
+.religion-detail__read-more:hover {
+  background: var(--detail-color-soft);
+  color: #fff;
+}
+
+.religion-detail__relations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.religion-detail__relation span {
+  color: var(--detail-color);
 }
 
 .religion-detail__empty {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--detail-color);
+  opacity: 0.62;
+}
+
+.religion-detail__name-highlight {
+  padding: 0 0.08em;
+  border-radius: 2px;
+  background: transparent;
+  color: var(--detail-color-light);
+  font-weight: 700;
 }
 
 .religion-detail__section {
@@ -253,7 +385,7 @@ canvas {
     top: auto;
     right: 12px;
     bottom: 12px;
-    width: min(360px, calc(100vw - 24px));
+    width: min(400px, calc(100vw - 24px));
     height: auto;
     max-height: min(420px, calc(100vh - 24px));
     transform: translate(18px, 18px);
@@ -261,7 +393,7 @@ canvas {
   }
 
   .religion-detail.is-open {
-    width: min(360px, calc(100vw - 24px));
+    width: min(400px, calc(100vw - 24px));
     padding: 16px 17px 18px;
     border-left-width: 4px;
     transform: translate(0, 0);

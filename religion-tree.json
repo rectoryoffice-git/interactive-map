@@ -14,7 +14,7 @@
     "india": "#f47a22",
     "eastAsia": "#ef3447",
     "arctic": "#f018a8",
-    "northAmerica": "#873aa3",
+    "northAmerica": "#b84ddb",
     "centralAmerica": "#13a5df",
     "southAmerica": "#23bde5",
     "oceania": "#a8d442",
@@ -1117,11 +1117,8 @@
       "date": "1904 AD",
       "region": "europe",
       "position": {
-        "x": 372,
+        "x": 346,
         "y": 876
-      },
-      "nameOffset": {
-        "x": -3
       },
       "parents": [
         "tsao"
@@ -1172,10 +1169,10 @@
         "theosophy"
       ],
       "nameOffset": {
-        "x": 4
+        "x": 0
       },
       "dateOffset": {
-        "x": 12
+        "x": 0
       }
     },
     {

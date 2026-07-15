@@ -27,6 +27,25 @@ const STROKE_SIZE = {
   regionBorder: 2,
   axisBorder: 1,
 };
+const LABELS_ABOVE_NODE = new Set([
+  "iroquois",
+  "santeria",
+  "pueblo",
+  "mississippi",
+  "haitianVoodoo",
+  "sikhism",
+  "islamSunni",
+  "islamShiite",
+  "bogomilism",
+  "rosicrucian",
+  "africanPoly",
+  "tsao",
+  "greek",
+  "ethiopian",
+  "indoIranian",
+  "newGuinea",
+  "eastOrthodox",
+]);
 let view = { x: 0, y: 0, scale: 0.86 };
 let targetView = { x: 0, y: 0, scale: 0.86 };
 let dragging = false;
@@ -35,6 +54,21 @@ let pointerDown = null;
 let dragDistance = 0;
 let hoveredNodeId = null;
 let hoverScales = new Map();
+let glowingNodes = [];
+let nextNodeGlowAt = 0;
+let sparklingStars = [];
+let nextStarAt = 0;
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const NODE_GLOW_DURATION = 1800;
+const HALO_COLORS = [
+  [28, 190, 123],
+  [60, 170, 255],
+  [176, 92, 255],
+  [255, 72, 142],
+  [255, 166, 54],
+  [245, 220, 72],
+  [52, 224, 220],
+];
 
 function preload() {
   if (window.RELIGION_TREE_DATA) {
@@ -50,18 +84,34 @@ function preload() {
 }
 
 function setup() {
-  pixelDensity(1);
+  pixelDensity(min(window.devicePixelRatio || 1, 2));
   const { width: canvasWidth, height: canvasHeight } = mapAppSize();
   const canvas = createCanvas(canvasWidth, canvasHeight);
   canvas.parent("map-app");
-  textFont("Arial");
+  textFont("Roboto");
   indexNodes();
   bindDetailPanel();
   refreshReligionDetailsFromJson();
   renderMapLayer();
   fitInitialView();
-  noLoop();
-  redraw();
+  nextNodeGlowAt = millis() + random(220, 550);
+  nextStarAt = millis() + random(700, 1600);
+  startRandomHaloColors();
+  if (reducedMotion) noLoop();
+}
+
+function startRandomHaloColors() {
+  if (reducedMotion) return;
+  const halo = document.querySelector(".ulc-logo-halo");
+  if (!halo) return;
+
+  const changeColor = () => {
+    const [red, green, blue] = random(HALO_COLORS);
+    halo.style.backgroundColor = `rgba(${red}, ${green}, ${blue}, 0.5)`;
+    setTimeout(changeColor, random(850, 1550));
+  };
+
+  changeColor();
 }
 
 function mapAppSize() {
@@ -93,9 +143,65 @@ function draw() {
     mapData.world.width * view.scale,
     mapData.world.height * view.scale
   );
+  drawSparklingStars();
+  drawRandomNodeGlow();
   drawHoverNode();
   drawTextOverlay();
   drawSelectionFocusOverlay();
+}
+
+function drawSparklingStars() {
+  if (reducedMotion) return;
+
+  const now = millis();
+  const pointerIsOnMap = mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height;
+  if (now >= nextStarAt && pointerIsOnMap) {
+    const angle = random(TWO_PI);
+    const distance = abs(randomGaussian(48, 34));
+    sparklingStars.push({
+      x: constrain(mouseX + cos(angle) * distance, 18, width - 18),
+      y: constrain(mouseY + sin(angle) * distance, 18, height - 18),
+      velocityX: random(-9, 9),
+      velocityY: random(12, 34),
+      size: random(2.5, 6.5),
+      startedAt: now,
+      duration: random(1800, 3200),
+    });
+    nextStarAt = now + random(220, 650);
+  } else if (now >= nextStarAt) {
+    nextStarAt = now + 250;
+  }
+
+  sparklingStars = sparklingStars.filter((star) => now - star.startedAt < star.duration);
+  for (const star of sparklingStars) {
+    if (now < star.startedAt) continue;
+    const progress = (now - star.startedAt) / star.duration;
+    const intensity = sq(sin(progress * PI));
+    const radius = star.size * intensity;
+    const elapsedSeconds = (now - star.startedAt) / 1000;
+    const starX = star.x + star.velocityX * elapsedSeconds;
+    const starY = star.y + star.velocityY * elapsedSeconds + 8 * sq(elapsedSeconds);
+
+    push();
+    translate(starX, starY);
+    drawingContext.save();
+    drawingContext.globalCompositeOperation = "screen";
+    drawingContext.shadowColor = "rgba(255, 255, 255, 0.95)";
+    drawingContext.shadowBlur = 4 + intensity * 11;
+    stroke(255, intensity * 255);
+    strokeWeight(lerp(0.45, 1.15, intensity));
+    line(-radius, 0, radius, 0);
+    line(0, -radius, 0, radius);
+    stroke(255, intensity * 185);
+    strokeWeight(0.55);
+    line(-radius * 0.45, -radius * 0.45, radius * 0.45, radius * 0.45);
+    line(-radius * 0.45, radius * 0.45, radius * 0.45, -radius * 0.45);
+    noStroke();
+    fill(255, intensity * 255);
+    circle(0, 0, max(0.8, intensity * 2.2));
+    drawingContext.restore();
+    pop();
+  }
 }
 
 function animateView() {
@@ -114,7 +220,40 @@ function animateView() {
     view.x = targetView.x;
     view.y = targetView.y;
     view.scale = targetView.scale;
-    if (!hasActiveHoverAnimation()) noLoop();
+    if (reducedMotion && !hasActiveHoverAnimation()) noLoop();
+  }
+}
+
+function drawRandomNodeGlow() {
+  if (reducedMotion || !mapData?.religions?.length) return;
+
+  const now = millis();
+  if (now >= nextNodeGlowAt) {
+    glowingNodes.push({
+      node: random(mapData.religions),
+      startedAt: now,
+    });
+    nextNodeGlowAt = now + random(280, 720);
+  }
+
+  glowingNodes = glowingNodes.filter((glow) => now - glow.startedAt < NODE_GLOW_DURATION);
+  for (const glow of glowingNodes) {
+    const progress = (now - glow.startedAt) / NODE_GLOW_DURATION;
+    const intensity = sq(sin(progress * PI));
+    const node = glow.node;
+    const nodeColor = colorFor(node);
+    push();
+    translate(view.x, view.y);
+    scale(view.scale);
+    drawingContext.save();
+    drawingContext.globalCompositeOperation = "screen";
+    drawingContext.shadowColor = nodeColor;
+    drawingContext.shadowBlur = lerp(8, 42, intensity);
+    noStroke();
+    fill(withAlpha(nodeColor, intensity * 255));
+    circle(node.renderPosition.x, node.renderPosition.y, NODE_SIZE.outer + intensity * 11);
+    drawingContext.restore();
+    pop();
   }
 }
 
@@ -262,7 +401,7 @@ function renderMapLayer() {
   mapLayer.noSmooth();
   mapLayer.clear();
   mapLayer.scale(CACHE_SCALE);
-  mapLayer.textFont("Arial");
+  mapLayer.textFont("Roboto");
   drawTitleText(mapLayer);
   drawRegionKeyShapes(mapLayer);
   drawRegionKeyText(mapLayer);
@@ -321,14 +460,24 @@ function dateAnchorForNode(node) {
   const pos = node.renderPosition;
   const nameOffset = node.nameOffset || node.labelOffset || {};
   const dateOffset = node.dateOffset || node.labelOffset || {};
+  const nameOffsetX = nameOffset.x || 0;
   const nameOffsetY = nameOffset.y || 0;
   const dateOffsetX = dateOffset.x || 0;
   const dateOffsetY = dateOffset.y || 0;
-  const labelY = pos.y + circleRadius + 3 + nameOffsetY;
+  const labelY = labelYForNode(node, nameOffsetY);
   return {
-    x: pos.x + dateOffsetX,
+    x: pos.x + (LABELS_ABOVE_NODE.has(node.id) ? nameOffsetX : dateOffsetX),
     y: labelY + labelHeightForNode(node) + 2 + dateOffsetY,
   };
+}
+
+function labelYForNode(node, offsetY = 0) {
+  const circleRadius = NODE_SIZE.outer / 2;
+  if (LABELS_ABOVE_NODE.has(node.id)) {
+    const dateSpace = node.date ? 11 : 0;
+    return node.renderPosition.y - circleRadius - 3 - labelHeightForNode(node) - dateSpace + offsetY;
+  }
+  return node.renderPosition.y + circleRadius + 3 + offsetY;
 }
 
 function labelHeightForNode(node) {
@@ -500,8 +649,17 @@ function hasActiveHoverAnimation() {
 
 function bindDetailPanel() {
   const closeButton = document.getElementById("religion-detail-close");
-  if (!closeButton) return;
+  const content = document.getElementById("religion-detail-content");
+  if (!closeButton || !content) return;
   closeButton.addEventListener("click", closeReligionDetail);
+  content.addEventListener("click", (event) => {
+    const button = event.target.closest(".religion-detail__read-more");
+    if (!button) return;
+    const description = button.previousElementSibling;
+    const expanded = description.classList.toggle("is-expanded");
+    button.textContent = expanded ? "READ LESS" : "READ MORE";
+    button.setAttribute("aria-expanded", String(expanded));
+  });
 }
 
 function refreshReligionDetailsFromJson() {
@@ -544,21 +702,29 @@ function renderReligionDetail(node) {
 
   content.innerHTML = `
     <h2>${escapeHtml(formatDisplayName(name))}</h2>
-    <div class="religion-detail__meta">${escapeHtml([date, formatAreaName(area)].filter(Boolean).join(" · "))}</div>
+    ${renderMetaPills(date, area)}
     ${renderFactTags(details)}
-    <p>${escapeHtml(description)}</p>
-    <dl>
-      <dt>Parents</dt>
-      <dd>${parents}</dd>
-      <dt>Children</dt>
-      <dd>${children}</dd>
-    </dl>
-    ${renderGodsSection(gods, details.godsNote)}
+    <div class="religion-detail__description">
+      <p>${highlightReligionName(description, name)}</p>
+      <button class="religion-detail__read-more" type="button" aria-expanded="false">READ MORE</button>
+    </div>
+    <div class="religion-detail__relations">
+      ${renderRelationPill("Parents", parents)}
+      ${renderRelationPill("Children", children)}
+    </div>
+    ${renderGodsSection(gods, details.godsNote, name)}
     ${renderSourcesSection(sources)}
   `;
   panel.classList.add("is-open");
   panel.setAttribute("aria-hidden", "false");
   document.body.classList.add("detail-sidebar-open");
+  requestAnimationFrame(() => {
+    const descriptionElement = content.querySelector(".religion-detail__description p");
+    const readMoreButton = content.querySelector(".religion-detail__read-more");
+    if (descriptionElement && readMoreButton && descriptionElement.scrollHeight <= descriptionElement.clientHeight + 1) {
+      readMoreButton.hidden = true;
+    }
+  });
 }
 
 function setDetailPanelColor(panel, colorValue) {
@@ -567,6 +733,8 @@ function setDetailPanelColor(panel, colorValue) {
   panel.style.setProperty("--detail-color", colorValue);
   panel.style.setProperty("--detail-color-soft", `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 0.58)`);
   panel.style.setProperty("--detail-color-glow", `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 0.22)`);
+  panel.style.setProperty("--detail-color-bg", `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 0.15)`);
+  panel.style.setProperty("--detail-color-light", `rgb(${rgb.map((channel) => Math.round(channel + (255 - channel) * 0.48)).join(", ")})`);
 }
 
 function closeReligionDetail() {
@@ -587,34 +755,46 @@ function scheduleMapResize() {
 
 function renderFactTags(details) {
   const facts = [
-    details.status && `Status: ${formatTrait(details.status)}`,
-    details.family && `Family: ${formatTrait(details.family)}`,
-    ...(details.theology || []).map((item) => `Theology: ${formatTrait(item)}`),
-    ...(details.originType || []).map((item) => `Origin: ${formatTrait(item)}`),
-    ...(details.practices || []).map((item) => `Practice: ${formatTrait(item)}`),
-    details.contestedClassification ? "Classification contested" : null,
+    details.status && ["Status", formatTrait(details.status)],
+    details.family && ["Family", formatTrait(details.family)],
+    ...(details.theology || []).map((item) => ["Theology", formatTrait(item)]),
+    ...(details.originType || []).map((item) => ["Origin", formatTrait(item)]),
+    ...(details.practices || []).map((item) => ["Practice", formatTrait(item)]),
+    details.contestedClassification ? ["Classification", "Contested"] : null,
   ].filter(Boolean);
 
   if (!facts.length) return "";
   return `
     <div class="religion-detail__tags">
-      ${facts.map((fact) => `<span>${escapeHtml(fact)}</span>`).join("")}
+      ${facts.map(([label, value]) => `<span><small>${escapeHtml(label)}</small>${escapeHtml(value)}</span>`).join("")}
     </div>
   `;
 }
 
-function renderGodsSection(gods, godsNote) {
+function renderMetaPills(date, area) {
+  const facts = [date, area && formatAreaName(area)].filter(Boolean);
+  if (!facts.length) return "";
+  return `<div class="religion-detail__meta-pills">${facts
+    .map((value) => `<span>${escapeHtml(value)}</span>`)
+    .join("")}</div>`;
+}
+
+function renderRelationPill(label, valueHtml) {
+  return `<div class="religion-detail__relation"><small>${escapeHtml(label)}</small><span>${valueHtml}</span></div>`;
+}
+
+function renderGodsSection(gods, godsNote, religionName) {
   if (!gods.length && !godsNote) return "";
   return `
     <section class="religion-detail__section">
       <h3>Figures and Powers</h3>
-      ${godsNote ? `<p class="religion-detail__note">${escapeHtml(godsNote)}</p>` : ""}
-      ${gods.length ? `<div class="religion-detail__cards">${gods.map(renderGodCard).join("")}</div>` : ""}
+      ${godsNote ? `<p class="religion-detail__note">${highlightReligionName(godsNote, religionName)}</p>` : ""}
+      ${gods.length ? `<div class="religion-detail__cards">${gods.map((god) => renderGodCard(god, religionName)).join("")}</div>` : ""}
     </section>
   `;
 }
 
-function renderGodCard(god) {
+function renderGodCard(god, religionName) {
   const aka = god.aka?.length ? `<div class="religion-detail__aka">${escapeHtml(god.aka.join(", "))}</div>` : "";
   const domain = god.domain ? `<div class="religion-detail__domain">${escapeHtml(god.domain)}</div>` : "";
   return `
@@ -622,7 +802,7 @@ function renderGodCard(god) {
       <h4>${escapeHtml(god.name || "Unnamed figure")}</h4>
       ${aka}
       ${domain}
-      ${god.description ? `<p>${escapeHtml(god.description)}</p>` : ""}
+      ${god.description ? `<p>${highlightReligionName(god.description, religionName)}</p>` : ""}
     </article>
   `;
 }
@@ -688,15 +868,33 @@ function escapeAttribute(value) {
   return escapeHtml(value).replace(/`/g, "&#96;");
 }
 
+function highlightReligionName(value, religionName) {
+  const terms = [...new Set(String(religionName || "")
+    .replace(/[^a-z0-9]+/gi, " ")
+    .trim()
+    .split(/\s+/)
+    .filter((term) => term.length > 2)
+    .map((term) => term.toLowerCase()))];
+  if (!terms.length) return escapeHtml(value);
+  const pattern = new RegExp(`(${terms.map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`, "gi");
+  return String(value).split(pattern).map((part) =>
+    terms.includes(part.toLowerCase())
+      ? `<mark class="religion-detail__name-highlight">${escapeHtml(part)}</mark>`
+      : escapeHtml(part)
+  ).join("");
+}
+
 function drawTitleText(target) {
   const { width: worldWidth } = mapData.world;
   target.noStroke();
   target.textAlign(CENTER, CENTER);
+  target.textFont("Papyrus Local");
+  target.textStyle(BOLD);
   target.textSize(TEXT_SIZE.title);
   target.fill(255);
   target.text(mapData.title, worldWidth / 2, 34);
+  target.textFont("Roboto");
   target.textSize(TEXT_SIZE.subtitle);
-  target.textStyle(BOLD);
   target.fill(mapData.palette.goldText);
   target.text(mapData.subtitle, worldWidth / 2, 76);
   target.textStyle(NORMAL);
@@ -1304,7 +1502,7 @@ function drawNodeLabels(onlyIds = null) {
     const nameOffset = node.nameOffset || node.labelOffset || {};
     const nameOffsetX = nameOffset.x || 0;
     const nameOffsetY = nameOffset.y || 0;
-    const labelY = pos.y + circleRadius + 3 + nameOffsetY;
+    const labelY = labelYForNode(node, nameOffsetY);
     const labelHeight = drawNameLabel(node.name, node.subtext, pos.x + nameOffsetX, labelY, colorFor(node));
     if (node.date) {
       const dateAnchor = dateAnchorForNode(node);
@@ -1382,6 +1580,8 @@ function mouseReleased() {
 
   if (node) {
     selectReligionNode(node);
+  } else if (wasClick && selectedNodeId) {
+    closeReligionDetail();
   }
   updateHoveredNode(mouseX, mouseY);
 }
@@ -1417,6 +1617,8 @@ function touchEnded() {
 
   if (node) {
     selectReligionNode(node);
+  } else if (wasTap && selectedNodeId) {
+    closeReligionDetail();
   }
   updateHoveredNode(mouseX, mouseY);
   return false;
