@@ -648,9 +648,12 @@ function hasActiveHoverAnimation() {
 }
 
 function bindDetailPanel() {
+  const panel = document.getElementById("religion-detail");
   const closeButton = document.getElementById("religion-detail-close");
   const content = document.getElementById("religion-detail-content");
-  if (!closeButton || !content) return;
+  if (!panel || !closeButton || !content) return;
+  ["pointerdown", "pointermove", "pointerup", "mousedown", "mouseup", "touchstart", "touchmove", "touchend", "wheel"]
+    .forEach((eventName) => panel.addEventListener(eventName, (event) => event.stopPropagation(), { passive: true }));
   closeButton.addEventListener("click", closeReligionDetail);
   content.addEventListener("click", (event) => {
     const button = event.target.closest(".religion-detail__read-more");
@@ -1549,7 +1552,30 @@ function fitInitialView() {
   targetView = { ...view };
 }
 
-function mousePressed() {
+function eventIsInsideDetailPanel(event) {
+  const panel = document.getElementById("religion-detail");
+  if (!panel?.classList.contains("is-open")) return false;
+  if (event?.target instanceof Element && event.target.closest("#religion-detail")) return true;
+  const point = event?.touches?.[0] || event?.changedTouches?.[0] || event;
+  if (!Number.isFinite(point?.clientX) || !Number.isFinite(point?.clientY)) return false;
+  const bounds = panel.getBoundingClientRect();
+  return point.clientX >= bounds.left && point.clientX <= bounds.right
+    && point.clientY >= bounds.top && point.clientY <= bounds.bottom;
+}
+
+function cancelMapPointerInteraction() {
+  dragging = false;
+  lastPointer = null;
+  pointerDown = null;
+  dragDistance = 0;
+  setHoveredNode(null);
+}
+
+function mousePressed(event) {
+  if (eventIsInsideDetailPanel(event)) {
+    cancelMapPointerInteraction();
+    return;
+  }
   dragging = true;
   lastPointer = createVector(mouseX, mouseY);
   pointerDown = createVector(mouseX, mouseY);
@@ -1557,7 +1583,8 @@ function mousePressed() {
   setHoveredNode(null);
 }
 
-function mouseDragged() {
+function mouseDragged(event) {
+  if (eventIsInsideDetailPanel(event)) return;
   if (!dragging) return;
   const now = createVector(mouseX, mouseY);
   if (pointerDown) {
@@ -1571,7 +1598,11 @@ function mouseDragged() {
   redraw();
 }
 
-function mouseReleased() {
+function mouseReleased(event) {
+  if (eventIsInsideDetailPanel(event)) {
+    cancelMapPointerInteraction();
+    return;
+  }
   const wasClick = pointerDown && dragDistance < 5;
   const node = wasClick ? nodeAtScreen(mouseX, mouseY) : null;
   dragging = false;
@@ -1586,7 +1617,11 @@ function mouseReleased() {
   updateHoveredNode(mouseX, mouseY);
 }
 
-function mouseMoved() {
+function mouseMoved(event) {
+  if (eventIsInsideDetailPanel(event)) {
+    setHoveredNode(null);
+    return;
+  }
   updateHoveredNode(mouseX, mouseY);
 }
 
@@ -1594,7 +1629,11 @@ function mouseOut() {
   setHoveredNode(null);
 }
 
-function touchStarted() {
+function touchStarted(event) {
+  if (eventIsInsideDetailPanel(event)) {
+    cancelMapPointerInteraction();
+    return true;
+  }
   dragging = true;
   lastPointer = createVector(mouseX, mouseY);
   pointerDown = createVector(mouseX, mouseY);
@@ -1603,12 +1642,17 @@ function touchStarted() {
   return false;
 }
 
-function touchMoved() {
-  mouseDragged();
+function touchMoved(event) {
+  if (eventIsInsideDetailPanel(event)) return true;
+  mouseDragged(event);
   return false;
 }
 
-function touchEnded() {
+function touchEnded(event) {
+  if (eventIsInsideDetailPanel(event)) {
+    cancelMapPointerInteraction();
+    return true;
+  }
   const wasTap = pointerDown && dragDistance < 8;
   const node = wasTap ? nodeAtScreen(mouseX, mouseY) : null;
   dragging = false;
@@ -1654,6 +1698,7 @@ function nodeAtScreen(screenX, screenY) {
 }
 
 function mouseWheel(event) {
+  if (eventIsInsideDetailPanel(event)) return true;
   const oldScale = targetView.scale;
   const factor = Math.exp(-event.delta * 0.0015);
   targetView.scale = constrain(targetView.scale * factor, 0.35, 2.5);
