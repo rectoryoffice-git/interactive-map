@@ -9,17 +9,20 @@ let leafNodes;
 let timelineStops;
 let routeOverrides;
 let selectedNodeId = null;
-const CACHE_SCALE = 2;
+// Render the static map above its display resolution, then downsample it. This
+// keeps diagonal routes, node borders, and the small timeline key crisp at the
+// initial zoom level.
+const CACHE_SCALE = 3;
 const TEXT_SIZE = {
-  title: 34,
-  subtitle: 27,
-  region: 12,
-  axis: 8,
-  religion: 9,
+  title: 36,
+  subtitle: 28,
+  region: 13,
+  axis: 9.5,
+  religion: 10.75,
 };
 const NODE_SIZE = {
-  outer: 15.5,
-  inner: 8.5,
+  outer: 17,
+  inner: 9.5,
 };
 const STROKE_SIZE = {
   link: 5,
@@ -58,6 +61,7 @@ let glowingNodes = [];
 let nextNodeGlowAt = 0;
 let sparklingStars = [];
 let nextStarAt = 0;
+let detailSparkleTimer = null;
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const NODE_GLOW_DURATION = 1800;
 const HALO_COLORS = [
@@ -84,7 +88,10 @@ function preload() {
 }
 
 function setup() {
-  pixelDensity(min(window.devicePixelRatio || 1, 2));
+  // Always supersample the live canvas. Desktop browsers and screenshot tools
+  // often report a 1x device ratio, which otherwise leaves small labels visibly
+  // pixelated even though the cached map artwork is rendered at high resolution.
+  pixelDensity(constrain(window.devicePixelRatio || 1, 2, 3));
   const { width: canvasWidth, height: canvasHeight } = mapAppSize();
   const canvas = createCanvas(canvasWidth, canvasHeight);
   canvas.parent("map-app");
@@ -95,7 +102,7 @@ function setup() {
   renderMapLayer();
   fitInitialView();
   nextNodeGlowAt = millis() + random(220, 550);
-  nextStarAt = millis() + random(700, 1600);
+  nextStarAt = millis() + random(180, 500);
   startRandomHaloColors();
   if (reducedMotion) noLoop();
 }
@@ -156,20 +163,27 @@ function drawSparklingStars() {
   const now = millis();
   const pointerIsOnMap = mouseX >= 0 && mouseX <= width && mouseY >= 0 && mouseY <= height;
   if (now >= nextStarAt && pointerIsOnMap) {
-    const angle = random(TWO_PI);
-    const distance = abs(randomGaussian(48, 34));
-    sparklingStars.push({
-      x: constrain(mouseX + cos(angle) * distance, 18, width - 18),
-      y: constrain(mouseY + sin(angle) * distance, 18, height - 18),
-      velocityX: random(-9, 9),
-      velocityY: random(12, 34),
-      size: random(2.5, 6.5),
-      startedAt: now,
-      duration: random(1800, 3200),
-    });
-    nextStarAt = now + random(220, 650);
+    const starsToAdd = random() < 0.42 ? 2 : 1;
+    for (let i = 0; i < starsToAdd; i++) {
+      const angle = random(TWO_PI);
+      const distance = abs(randomGaussian(62, 44));
+      sparklingStars.push({
+        x: constrain(mouseX + cos(angle) * distance, 18, width - 18),
+        y: constrain(mouseY + sin(angle) * distance, 18, height - 18),
+        velocityX: random(22, 46),
+        velocityY: random(-38, -18),
+        windStrength: random(5, 13),
+        driftScale: random(0.78, 1.18),
+        sway: random(TWO_PI),
+        size: random(2.2, 6.2),
+        startedAt: now + i * 35,
+        duration: random(1500, 2700),
+      });
+    }
+    if (sparklingStars.length > 90) sparklingStars.splice(0, sparklingStars.length - 90);
+    nextStarAt = now + random(85, 240);
   } else if (now >= nextStarAt) {
-    nextStarAt = now + 250;
+    nextStarAt = now + 120;
   }
 
   sparklingStars = sparklingStars.filter((star) => now - star.startedAt < star.duration);
@@ -179,8 +193,11 @@ function drawSparklingStars() {
     const intensity = sq(sin(progress * PI));
     const radius = star.size * intensity;
     const elapsedSeconds = (now - star.startedAt) / 1000;
-    const starX = star.x + star.velocityX * elapsedSeconds;
-    const starY = star.y + star.velocityY * elapsedSeconds + 8 * sq(elapsedSeconds);
+    const slowWindPulse = 0.78 + sin(now * 0.00042) * 0.18 + sin(now * 0.0011 + 1.7) * 0.08;
+    const changingLift = 1 + sin(now * 0.00031 + 0.8) * 0.24;
+    const gust = sin(elapsedSeconds * 6 + star.sway) * star.windStrength;
+    const starX = star.x + star.velocityX * star.driftScale * slowWindPulse * elapsedSeconds + 3 * sq(elapsedSeconds);
+    const starY = star.y + star.velocityY * star.driftScale * changingLift * elapsedSeconds - 1.5 * sq(elapsedSeconds) + gust * 0.22;
 
     push();
     translate(starX, starY);
@@ -474,7 +491,7 @@ function dateAnchorForNode(node) {
 function labelYForNode(node, offsetY = 0) {
   const circleRadius = NODE_SIZE.outer / 2;
   if (LABELS_ABOVE_NODE.has(node.id)) {
-    const dateSpace = node.date ? 11 : 0;
+    const dateSpace = node.date ? 13 : 0;
     return node.renderPosition.y - circleRadius - 3 - labelHeightForNode(node) - dateSpace + offsetY;
   }
   return node.renderPosition.y + circleRadius + 3 + offsetY;
@@ -484,7 +501,7 @@ function labelHeightForNode(node) {
   const labelLines = node.name.split("\n").filter(Boolean);
   const subtextLines = node.subtext ? String(node.subtext).split("\n").filter(Boolean) : labelLines.slice(1);
   const lines = [labelLines[0], ...subtextLines].filter(Boolean);
-  return lines.length * 11;
+  return lines.length * 13;
 }
 
 function withAlpha(colorValue, alpha) {
@@ -718,6 +735,7 @@ function renderReligionDetail(node) {
     ${renderGodsSection(gods, details.godsNote, name)}
     ${renderSourcesSection(sources)}
   `;
+  decorateDetailKeyText(content);
   panel.classList.add("is-open");
   panel.setAttribute("aria-hidden", "false");
   document.body.classList.add("detail-sidebar-open");
@@ -730,6 +748,48 @@ function renderReligionDetail(node) {
   });
 }
 
+function decorateDetailKeyText(content) {
+  const keyText = [
+    content.querySelector("h2"),
+    ...content.querySelectorAll("h3"),
+    content.querySelector(".religion-detail__name-highlight"),
+  ].filter(Boolean);
+  for (const element of keyText) {
+    element.classList.add("religion-detail__sparkle-anchor");
+  }
+  startRandomDetailSparkles(content, keyText);
+}
+
+function startRandomDetailSparkles(content, keyText) {
+  clearTimeout(detailSparkleTimer);
+  if (reducedMotion || !keyText.length) return;
+
+  const scheduleNext = () => {
+    detailSparkleTimer = window.setTimeout(() => {
+      const panel = document.getElementById("religion-detail");
+      if (!content.isConnected || !panel?.classList.contains("is-open")) return;
+      const sparkleCount = random() < 0.2 ? 2 : 1;
+      for (let i = 0; i < sparkleCount; i++) {
+        const anchor = random(keyText);
+        const sparkle = document.createElement("span");
+        const size = random(7, 13);
+        sparkle.className = "religion-detail__sparkle";
+        sparkle.setAttribute("aria-hidden", "true");
+        sparkle.style.left = `${random(8, 92)}%`;
+        sparkle.style.top = `${random(18, 82)}%`;
+        sparkle.style.width = `${size}px`;
+        sparkle.style.height = `${size}px`;
+        sparkle.style.margin = `${-size / 2}px 0 0 ${-size / 2}px`;
+        sparkle.style.setProperty("--sparkle-duration", `${random(650, 1150)}ms`);
+        sparkle.addEventListener("animationend", () => sparkle.remove(), { once: true });
+        anchor.appendChild(sparkle);
+      }
+      scheduleNext();
+    }, random(180, 760));
+  };
+  scheduleNext();
+}
+
 function setDetailPanelColor(panel, colorValue) {
   const rgb = colorToRgb(colorValue);
   if (!rgb) return;
@@ -738,10 +798,13 @@ function setDetailPanelColor(panel, colorValue) {
   panel.style.setProperty("--detail-color-glow", `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 0.22)`);
   panel.style.setProperty("--detail-color-bg", `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, 0.15)`);
   panel.style.setProperty("--detail-color-light", `rgb(${rgb.map((channel) => Math.round(channel + (255 - channel) * 0.48)).join(", ")})`);
+  panel.style.setProperty("--detail-sparkle-color", `rgb(${rgb.map((channel) => Math.round(channel + (255 - channel) * 0.7)).join(", ")})`);
 }
 
 function closeReligionDetail() {
   selectedNodeId = null;
+  clearTimeout(detailSparkleTimer);
+  detailSparkleTimer = null;
   const panel = document.getElementById("religion-detail");
   if (!panel) return;
   panel.classList.remove("is-open");
@@ -1522,17 +1585,17 @@ function drawNameLabel(label, subtext, x, y, color) {
   textSize(TEXT_SIZE.religion);
   textStyle(BOLD);
   for (let i = 0; i < lines.length; i++) {
-    drawOutlinedText(lines[i], x, y + i * 11, i === 0 ? color : 255, 3);
+    drawOutlinedText(lines[i], x, y + i * 13, i === 0 ? color : 255, 2.15);
   }
   textStyle(NORMAL);
-  return lines.length * 11;
+  return lines.length * 13;
 }
 
 function drawDateLabel(date, x, y) {
   textAlign(CENTER, TOP);
   textSize(TEXT_SIZE.religion);
   textStyle(BOLD);
-  drawOutlinedText(date, x, y, 255, 3);
+  drawOutlinedText(date, x, y, 255, 2.15);
   textStyle(NORMAL);
 }
 
@@ -1546,7 +1609,7 @@ function drawOutlinedText(content, x, y, fillColor, outlineWeight) {
 }
 
 function fitInitialView() {
-  view.scale = min(width / mapData.world.width, height / mapData.world.height) * 0.92;
+  view.scale = min(width / mapData.world.width, height / mapData.world.height) * 0.965;
   view.x = (width - mapData.world.width * view.scale) / 2;
   view.y = 0;
   targetView = { ...view };

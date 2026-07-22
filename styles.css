@@ -286,11 +286,69 @@ canvas {
 }
 
 .religion-detail__name-highlight {
+  display: inline-block;
   padding: 0 0.08em;
   border-radius: 2px;
   background: transparent;
   color: var(--detail-color-light);
   font-weight: 700;
+}
+
+.religion-detail__sparkle-anchor {
+  position: relative;
+}
+
+h2.religion-detail__sparkle-anchor,
+h3.religion-detail__sparkle-anchor {
+  width: fit-content;
+}
+
+.religion-detail__sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  color: var(--detail-sparkle-color, #fff);
+  pointer-events: none;
+  z-index: 2;
+  filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 7px currentColor);
+  animation: religion-detail-sparkle var(--sparkle-duration, 900ms) ease-out forwards;
+}
+
+.religion-detail__sparkle::before,
+.religion-detail__sparkle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat,
+    linear-gradient(currentColor, currentColor) center / 1px 100% no-repeat;
+}
+
+.religion-detail__sparkle::after {
+  inset: 2px;
+  transform: rotate(45deg);
+  opacity: 0.72;
+}
+
+@keyframes religion-detail-sparkle {
+  0% {
+    opacity: 0;
+    transform: scale(0.12) rotate(-18deg);
+  }
+  38% {
+    opacity: 1;
+    transform: scale(1.2) rotate(4deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.2) rotate(24deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .religion-detail__sparkle {
+    display: none;
+  }
 }
 
 .religion-detail__section {
